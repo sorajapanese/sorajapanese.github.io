@@ -1,0 +1,40 @@
+:root{
+  --sora-green:#0B2C20;
+  --sora-dark:#061B13;
+  --max-menu-width:760px;
+}
+
+*{box-sizing:border-box}
+
+html,body{
+  margin:0;
+  padding:0;
+  background:var(--sora-dark);
+}
+
+body{
+  overflow-x:hidden;
+}
+
+.menu-stack{
+  width:100%;
+}
+
+.page{
+  width:min(100%, var(--max-menu-width));
+  margin:0 auto;
+  line-height:0;
+  background:var(--sora-green);
+}
+
+.page img{
+  display:block;
+  width:100%;
+  height:auto;
+}
+
+@media (max-width:760px){
+  .page{
+    width:100%;
+  }
+}
