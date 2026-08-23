@@ -1,26 +1,26 @@
-SORA QR MENU - 4 SAYFA
+SORA QR MENU — DÜZENLENEBİLİR SÜRÜM
 
-1. sayfa: Kapak
-2. sayfa: Hikâye
-3. sayfa: Başlangıçlar, Salatalar & Çorbalar
-4. sayfa: Nigiri & Sashimi
+ANA KURAL:
+Ürün/fiyat/açıklama değişiklikleri için sadece menu-data.js dosyasını düzenleyin.
 
-4. sayfa, onaylanan görsel tasarıma dokunulmadan assets/page4-approved.png olarak eklendi.
-Tüm sayfalar aynı responsive CSS yapısı içinde, masaüstünde maksimum 760px genişlikte ve mobilde %100 genişlikte görüntülenir.
+ÖRNEK FİYAT DEĞİŞİKLİĞİ:
+{ name: "Edamame", price: 290 }
+→
+{ name: "Edamame", price: 320 }
 
+ÜRÜN SİLME:
+İlgili { name: ..., price: ... } satırını silin.
 
-Renk düzeltmesi: 4. sayfanın yeşil zemini 3. sayfanın gerçek zemin tonuna eşleştirildi. Altın, kırmızı, metin, ejderha ve yerleşim değiştirilmedi.
+YENİ ÜRÜN EKLEME:
+Aynı kategori içindeki items: [ ... ] listesine yeni bir obje ekleyin.
+Örn: { name: "Yeni Ürün", price: 450 },
 
-5. sayfa: MAKI ROLLS. 4. sayfanın görsel tabanından türetilmiştir.
+AÇIKLAMALI ÜRÜN:
+{ name: "Lemon Sea", price: 620, description: "Levrek, peynir..." }
 
-6. sayfa: SPECIAL ROLLS / PİŞMİŞ ROLLER. 5. sayfanın master tasarımından türetilmiştir.
+TASARIM DOSYALARI:
+style.css = görünüm ve responsive kurallar
+menu-render.js = menu-data.js verisini sayfalara basar
+assets/sora-menu-page3-bg.png = 3–11. sayfaların ortak master arka planı
 
-7. sayfa: SPECIAL ROLLS / ÇİĞ ROLLER. 6. sayfanın master tasarımından türetilmiştir.
-
-8. sayfa: SPECIAL ROLLS / VEJETARYEN ROLLER. 7. sayfanın master tasarımından türetilmiştir.
-
-9. sayfa: ANA YEMEKLER. 8. sayfanın master tasarımından türetilmiştir.
-
-10. sayfa: NOODLE, UDON & RAMEN. 9. sayfanın master tasarımından türetilmiştir.
-
-11. sayfa: TATLI & İÇECEKLER. 10. sayfanın master tasarımından türetilmiştir.
+Kapak ve hikâye sayfaları görsel olarak korunmuştur.
