@@ -10,13 +10,16 @@ window.SORA_MENU = [
         { name: "Fresh Kimchi", price: 310 },
         { name: "Miso Çorba", price: 310 },
         { name: "Çin Böreği", price: 310 },
-        { name: "Acı Ekşi Çorba", price: 420 },
+        { name: "Spicy Korean Soup", price: 420 },
         { name: "Buharda Çin Mantısı", price: 420 },
         { name: "Kızarmış Çin Mantısı", price: 420 },
         { name: "Dana Etli Gyoza", price: 430 },
         { name: "Corn Tempura", price: 380 },
         { name: "Tavuklu Bun (2 Adet)", price: 620 },
         { name: "Dana Etli Bun (2 Adet)", price: 650 },
+        { name: "Veggy Tempura", price: 380 },
+        { name: "Fish and Chips", price: 750 },
+        { name: "Karides Cipsi", price: 250 },
         { name: "Sora Bomb", price: 680 }
       ]}
     ]
@@ -107,11 +110,9 @@ window.SORA_MENU = [
     id: "ana-yemekler",
     title: "ANA YEMEKLER",
     sections: [{ items: [
-      { name: "Veggy Tempura", price: 380 },
       { name: "Tatlı Ekşi Soslu Tavuk", price: 710 },
-      { name: "General Tso Tavuk", price: 720 },
-      { name: "Fish and Chips", price: 750 },
-      { name: "Kung Pao Tavuk", price: 760 },
+      { name: "Amiral Tso Tavuk", price: 720 },
+      { name: "Shao Pao Tavuk", price: 760 },
       { name: "Bulgogi Dana", price: 870 },
       { name: "Yeşil Soğanlı Dana", price: 890 },
       { name: "Çıtır Patlıcanlı Dana", price: 910 }
@@ -137,14 +138,14 @@ window.SORA_MENU = [
     id: "tatli-icecekler",
     title: "TATLI & İÇECEKLER",
     sections: [
-      { title: "TATLI", items: [{ name: "Kızarmış Dondurma", price: 250 }]},
+      { title: "TATLI", items: [{ name: "Kızarmış Dondurma", price: 350 }, { name: "Mochi (Çilek/Vanilya)", price: 150 }, { name: "Japanese Cheesecake", price: 350 } ]},
       { title: "SOĞUK İÇECEKLER", items: [
-        { name: "Küçük Su", price: 60 }, { name: "Soda", price: 80 },
-        { name: "Cola / Fanta / Sprite", price: 120 }, { name: "Fuze Tea (Limon / Şeftali)", price: 120 },
+        { name: "Küçük Su", price: 60 }, { name: "Uludağ Premium 250 ml Soda", price: 120 },
+        { name: "Cola / Fanta / Sprite", price: 120 }, { name: "Fuse Tea (Limon / Şeftali)", price: 120 }, { name: "Uludağ Gazoz 330 ml", price: 120 },
         { name: "Büyük Su", price: 140 }
       ]},
       { title: "SICAK İÇECEKLER", items: [
-        { name: "Türk Kahvesi", price: 160 }, { name: "Bitki Çayı", price: 180 }, { name: "Filtre Kahve", price: 180 }
+        { name: "Türk Kahvesi", price: 160 }, { name: "Bitki Çayı", price: 180 }, { name: "Filtre Kahve", price: 180 }, { name: "Yeşil Çay", price: 160 }
       ]}
     ]
   }
