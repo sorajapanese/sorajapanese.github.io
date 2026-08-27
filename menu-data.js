@@ -90,7 +90,7 @@ window.SORA_MENU = [
       { name: "California Sora", price: 680, description: "Tobiko, avokado, salatalık, peynir, somon, japon mayonezi" },
       { name: "Black Dragon", price: 710, description: "Levrek, tempura somon, avokado, salatalık, peynir, acı mayonez, chili biber" },
       { name: "Tuna Tartar", price: 710, description: "Tuna balığı, toro ezmesi, togarashi, susam yağı, avokado, teriyaki, acı mayonez" },
-      { name: "Sora Crunch", price: 720, description: "Somon, tempura karides, siyah pirinç, avokado, peynir, salatalık" },
+      { name: "Sora Crunch", price: 735, description: "Somon, tempura karides, siyah pirinç, avokado, peynir, salatalık" },
       { name: "Tuna Fire", price: 740, description: "Tuna ezmesi, trüf, acı mayonez, togarashi, avokado, tempura karides, peynir" },
       { name: "Maguro Roll", price: 775, description: "Maguro, toro, avokado, salatalık, peynir, acı sos" },
       { name: "Ocean Mix", price: 830, description: "Salatalık, avokado, peynir, somon, levrek, maguro" }
@@ -142,8 +142,8 @@ window.SORA_MENU = [
       { title: "SOĞUK İÇECEKLER", items: [
         { name: "Küçük Su", price: 60 }, { name: "Uludağ Premium 250 ml Soda", price: 120 },
         { name: "Cola / Fanta / Sprite", price: 120 }, { name: "Fuse Tea (Limon / Şeftali)", price: 120 }, { name: "Uludağ Gazoz 330 ml", price: 120 },
-        { name: "Büyük Su", price: 140 }
-      ]},
+        { name: "Büyük Su", price: 140 }, { name: "San Pellegrino 250 ml", price: 160 }, { name: "San Pellegrino 750 ml", price: 260 },
+]},
       { title: "SICAK İÇECEKLER", items: [
         { name: "Türk Kahvesi", price: 160 }, { name: "Bitki Çayı", price: 180 }, { name: "Filtre Kahve", price: 180 }, { name: "Yeşil Çay", price: 160 }
       ]}
