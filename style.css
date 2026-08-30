@@ -1,76 +1,876 @@
 :root{
   --sora-green:#0B2C20;
   --sora-dark:#061B13;
-  --sora-gold:#C5A14B;
-  --sora-light-gold:#DFBF72;
-  --sora-cream:#EFE5CF;
-  --sora-red:#B53A2D;
+  --sora-gold:#A9833F;
+  --sora-gold-light:#C2A15A;
+  --sora-white:#EFE5CF;
   --max-menu-width:760px;
 }
-*{box-sizing:border-box} html{scroll-behavior:smooth}
-html,body{margin:0;padding:0;background:var(--sora-dark);color:var(--sora-cream)}
+
+*{box-sizing:border-box}
+html,body{margin:0;padding:0;background:var(--sora-dark)}
 body{overflow-x:hidden}
 .menu-stack{width:100%}
-.image-page,.menu-page{width:min(100%,var(--max-menu-width));margin:0 auto}
-.image-page{line-height:0;background:var(--sora-green)}
-.image-page img{display:block;width:100%;height:auto}
-.menu-page{
+
+.page{
   position:relative;
-  aspect-ratio:1054/1492;
+  width:min(100%, var(--max-menu-width));
+  aspect-ratio:1086 / 1448;
+  margin:0 auto;
   overflow:hidden;
-  background:var(--sora-green) url('assets/sora-menu-page3-bg.png') center/100% 100% no-repeat;
-  font-family:Georgia,'Times New Roman',serif;
+  background:var(--sora-green);
 }
-.menu-content{
+
+.image-page{line-height:0}
+.page-art,
+.menu-background{
   position:absolute;
-  left:14.6%; top:25.6%; width:64.5%; height:68.7%;
-  display:flex; flex-direction:column;
+  inset:0;
+  display:block;
+  width:100%;
+  height:100%;
+  object-fit:cover;
 }
-.page-title{
-  margin:0 auto 3.1%; max-width:96%; text-align:center;
-  color:var(--sora-gold); font-size:clamp(25px,4.5vw,37px); line-height:1.1;
-  letter-spacing:.055em; font-weight:400;
+
+.master-frame{
+  position:absolute;
+  inset:0;
+  z-index:50;
+  display:block;
+  width:100%;
+  height:100%;
+  pointer-events:none;
+  user-select:none;
 }
-.page-title::after{
-  content:'◇'; display:block; margin:.6em auto 0; width:72%;
-  color:var(--sora-gold); font-size:.52em; line-height:1px;
-  background:linear-gradient(var(--sora-gold),var(--sora-gold)) left center/43% 1px no-repeat,
-             linear-gradient(var(--sora-gold),var(--sora-gold)) right center/43% 1px no-repeat;
+
+.menu-page{container-type:inline-size}
+.menu-background{pointer-events:none;user-select:none}
+
+/* Eski gömülü kategori başlığını örter; içerik koddan gelir. */
+.page3-heading-cover{
+  position:absolute;
+  left:31.3%;
+  width:43.7%;
+  top:17.9%;
+  height:8.5%;
+  background-image:url('assets/page3-heading-cover.png');
+  background-size:100% 100%;
+  background-repeat:no-repeat;
+  pointer-events:none;
+  user-select:none;
 }
-.page-subtitle,.group-title{
-  margin:.2em auto .55em; width:88%; text-align:center; color:var(--sora-gold);
-  font-size:clamp(17px,2.8vw,24px); letter-spacing:.045em; font-weight:400;
+
+/* Pagoda büyütüldüğü için liste biraz sağa taşındı; sağ boşluk artık menüyle dengeleniyor. */
+.menu-items{
+  position:absolute;
+  z-index:10;
+  left:37.4%;
+  right:10.7%;
+  top:22.35%;
+  height:61.7%;
+  display:grid;
+  grid-template-rows:repeat(19, 1fr);
+  font-family:"Iowan Old Style","Palatino Linotype","Book Antiqua",Palatino,Georgia,serif;
 }
-.group-title{display:flex;align-items:center;gap:.7em;justify-content:center}
-.group-title::before,.group-title::after{content:'';height:1px;background:var(--sora-gold);flex:1;opacity:.8}
-.menu-group{margin-bottom:1.3%}
-.menu-item{padding:.22em 0 .28em;border-bottom:1px solid rgba(197,161,75,.23)}
-.item-main{display:flex;align-items:baseline;min-width:0;gap:.45em}
-.flower{color:var(--sora-gold);font-size:.65em;flex:0 0 auto}
-.item-name{font-size:clamp(15px,2.55vw,21px);line-height:1.14;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.leader{height:1px;border-bottom:1px dotted rgba(197,161,75,.78);flex:1;min-width:.7em;transform:translateY(-.22em)}
-.item-price{color:var(--sora-light-gold);font-size:clamp(15px,2.55vw,21px);white-space:nowrap;font-variant-numeric:tabular-nums}
-.item-description{margin:.18em 0 .1em 1.7em;color:rgba(239,229,207,.88);font-size:clamp(10px,1.65vw,14px);line-height:1.2}
-.dense .menu-content{top:24.4%;height:70.3%}
-.dense .page-title{margin-bottom:1.6%}
-.dense .menu-item{padding:.14em 0 .18em}
-.dense .item-name,.dense .item-price{font-size:clamp(13px,2.15vw,18px)}
-.dense .item-description{font-size:clamp(9px,1.48vw,12.5px);line-height:1.12;margin-top:.08em}
-.extra-dense .menu-content{top:23.6%;height:71%}
-.extra-dense .page-title{font-size:clamp(22px,4vw,33px);margin-bottom:.8%}
-.extra-dense .page-subtitle{font-size:clamp(15px,2.45vw,21px);margin-bottom:.25em}
-.extra-dense .menu-item{padding:.06em 0 .08em}
-.extra-dense .item-name,.extra-dense .item-price{font-size:clamp(11.5px,1.88vw,16px)}
-.extra-dense .item-description{font-size:clamp(8px,1.26vw,10.8px);line-height:1.06;margin-top:.03em}
-@media(max-width:520px){
-  .image-page,.menu-page{width:100%}
-  .menu-content{left:13.8%;width:66%}
-  .page-title{font-size:clamp(20px,5.6vw,30px)}
-  .page-subtitle,.group-title{font-size:clamp(14px,3.8vw,20px)}
-  .item-name,.item-price{font-size:clamp(12px,3.5vw,17px)}
-  .item-description{font-size:clamp(8.5px,2.35vw,11.5px)}
-  .dense .item-name,.dense .item-price{font-size:clamp(10.5px,3vw,15px)}
-  .dense .item-description{font-size:clamp(7.5px,2.05vw,10px)}
-  .extra-dense .item-name,.extra-dense .item-price{font-size:clamp(9.5px,2.6vw,13px)}
-  .extra-dense .item-description{font-size:clamp(6.8px,1.82vw,9px)}
+
+.menu-heading{
+  min-width:0;
+  display:flex;
+  align-items:end;
+  gap:.46em;
+  line-height:1;
 }
+
+.heading-flower{
+  display:block;
+  width:1.35em;
+  height:1.35em;
+  object-fit:contain;
+  flex:0 0 auto;
+  transform:translateY(.05em);
+}
+
+.section-heading{
+  color:var(--sora-gold-light);
+  font-size:clamp(10px, 2.06cqw, 15.7px);
+  font-weight:700;
+  letter-spacing:.04em;
+  text-transform:uppercase;
+  text-shadow:0 1px 1px rgba(0,0,0,.35);
+}
+
+.menu-item{
+  min-width:0;
+  display:grid;
+  grid-template-columns:1.10em max-content minmax(1.2em,1fr) max-content;
+  align-items:center;
+  column-gap:.47em;
+  white-space:nowrap;
+  line-height:1;
+}
+
+.menu-flower{
+  display:block;
+  width:.92em;
+  height:.92em;
+  object-fit:contain;
+}
+
+.item-content{display:inline-flex;align-items:center;gap:.28em;min-width:0}
+.item-icons{display:inline-flex;align-items:center;gap:.12em;flex:0 0 auto}
+.item-icon{display:block;width:.80em;height:.80em;object-fit:contain}
+
+.item-name{
+  color:var(--sora-white);
+  font-size:clamp(8px, 1.86cqw, 14.1px);
+  font-weight:500;
+  letter-spacing:-0.01em;
+  text-shadow:0 1px 1px rgba(0,0,0,.35);
+}
+
+.leader{
+  align-self:center;
+  min-width:.8em;
+  border-bottom:1px dotted rgba(169,131,63,.76);
+  transform:translateY(.08em);
+}
+
+.item-price{
+  color:var(--sora-gold-light);
+  font-size:clamp(8px, 1.84cqw, 14px);
+  font-weight:500;
+  letter-spacing:.01em;
+  text-shadow:0 1px 1px rgba(0,0,0,.35);
+}
+
+@media (max-width:760px){.page{width:100%}}
+
+/* ==========================================================
+   4. SAYFA - NIGIRI / SASHIMI DÜZENLENEBİLİR MENÜ
+   İçerik menu-data.js içindeki menuPages.page4 alanından gelir.
+   ========================================================== */
+.page4-menu-page{container-type:inline-size}
+
+/* Görselde daha önce gömülü olan menü yazılarını kapatır.
+   SORA başlığı, Fuji, çerçeve ve sayfanın geri kalan tasarımı korunur. */
+.page4-content-cover{
+  position:absolute;
+  z-index:5;
+  left:20.2%;
+  right:19.0%;
+  top:37.2%;
+  height:55.0%;
+  background:
+    radial-gradient(circle at 20% 20%, rgba(18,55,40,.18) 0 1px, transparent 1.4px) 0 0/10px 10px,
+    radial-gradient(circle at 70% 65%, rgba(0,0,0,.16) 0 1px, transparent 1.5px) 0 0/13px 13px,
+    linear-gradient(rgba(6,27,19,.965), rgba(6,27,19,.965));
+  box-shadow:0 0 22px 18px rgba(6,27,19,.96);
+  pointer-events:none;
+}
+
+.page4-menu-items{
+  left:26.0%;
+  right:23.5%;
+  top:38.2%;
+  height:50.4%;
+  grid-template-rows:repeat(14, 1fr);
+  z-index:10;
+}
+
+.page4-menu-items .section-heading{
+  font-size:clamp(11px, 2.34cqw, 17.8px);
+  letter-spacing:.075em;
+}
+
+.page4-menu-items .heading-flower{
+  width:1.45em;
+  height:1.45em;
+}
+
+.page4-menu-items .item-name,
+.page4-menu-items .item-price{
+  font-size:clamp(8px, 1.88cqw, 14.3px);
+}
+
+.page4-menu-items .menu-item{
+  grid-template-columns:1.05em max-content minmax(1.4em,1fr) max-content 1.55em;
+  column-gap:.48em;
+}
+
+.page4-menu-items .nutrition-toggle{
+  width:1.55em;height:1.55em;padding:0;border:1px solid rgba(194,161,90,.92);
+  border-radius:50%;display:grid;place-items:center;background:rgba(6,27,19,.90);
+  color:var(--sora-gold-light);font:700 clamp(8px,1.55cqw,12px)/1 Arial,sans-serif;
+  cursor:pointer;box-shadow:0 1px 4px rgba(0,0,0,.28);
+}
+.page4-menu-items .nutrition-toggle.is-active{background:rgba(11,44,32,.98)}
+.page4-menu-page .nutrition-panel{left:26%;right:20%;}
+
+/* ==========================================================
+   3. SAYFA - AÇILIR BESİN DEĞERİ / ALERJEN KATMANI
+   Ana menü yerleşimi değiştirilmez; + düğmesi sağ boşlukta durur.
+   ========================================================== */
+#page3-menu .menu-item{position:relative}
+
+#page3-menu .nutrition-toggle{
+  position:absolute;
+  left:calc(100% + .72em);
+  top:50%;
+  transform:translateY(-50%);
+  width:1.55em;
+  height:1.55em;
+  padding:0;
+  border:1px solid rgba(194,161,90,.92);
+  border-radius:50%;
+  display:grid;
+  place-items:center;
+  background:rgba(6,27,19,.90);
+  color:var(--sora-gold-light);
+  font:700 clamp(8px,1.55cqw,12px)/1 Arial,sans-serif;
+  cursor:pointer;
+  z-index:22;
+  box-shadow:0 1px 4px rgba(0,0,0,.28);
+}
+
+#page3-menu .nutrition-toggle.is-active{
+  background:rgba(11,44,32,.98);
+}
+
+.nutrition-panel{
+  position:absolute;
+  z-index:40;
+  line-height:1.2;
+  left:38.5%;
+  right:7.0%;
+  display:none;
+  padding:1.25% 1.55% 1.15%;
+  background:rgba(6,27,19,.975);
+  border:1px solid rgba(194,161,90,.88);
+  box-shadow:0 7px 20px rgba(0,0,0,.42);
+  color:var(--sora-white);
+  font-family:"Iowan Old Style","Palatino Linotype","Book Antiqua",Palatino,Georgia,serif;
+}
+.nutrition-panel.is-open{display:block}
+.nutrition-panel:before{
+  content:"";
+  position:absolute;
+  inset:4px;
+  border:1px solid rgba(169,131,63,.20);
+  pointer-events:none;
+}
+.nutrition-head{
+  position:relative;
+  z-index:1;
+  display:flex;
+  justify-content:space-between;
+  align-items:baseline;
+  gap:1em;
+  padding-right:1.25em;
+}
+.nutrition-name{
+  color:var(--sora-white);
+  font-size:clamp(9px,1.90cqw,14.5px);
+  font-weight:600;
+}
+.nutrition-kcal{
+  color:var(--sora-gold-light);
+  font-size:clamp(9px,1.84cqw,14px);
+  white-space:nowrap;
+}
+.nutrition-macros{
+  line-height:1.25;
+  position:relative;
+  z-index:1;
+  display:flex;
+  flex-wrap:wrap;
+  gap:.35em 1.05em;
+  margin-top:.55em;
+  color:rgba(239,229,207,.93);
+  font-size:clamp(7px,1.42cqw,10.8px);
+}
+.nutrition-allergens{
+  position:relative;
+  z-index:1;
+  margin-top:.55em;
+  padding-top:.48em;
+  border-top:1px solid rgba(169,131,63,.28);
+  color:rgba(239,229,207,.92);
+  font-size:clamp(7px,1.42cqw,10.8px);
+  line-height:1.25;
+}
+.nutrition-allergens strong{color:var(--sora-gold-light)}
+.nutrition-close{
+  position:absolute;
+  z-index:2;
+  right:.35em;
+  top:.18em;
+  padding:0;
+  border:0;
+  background:transparent;
+  color:var(--sora-gold-light);
+  font:400 clamp(12px,2.1cqw,16px)/1 Arial,sans-serif;
+  cursor:pointer;
+}
+
+/* ==========================================================
+   4. SAYFA - AÇILIR BESİN DEĞERİ / ALERJEN KATMANI
+   Onaylı Fuji görseli değişmez; yalnızca + düğmeleri ve kart eklenir.
+   ========================================================== */
+.page4-nutrition-page{container-type:inline-size}
+.page4-nutrition-hotspots{position:absolute;inset:0;z-index:20;pointer-events:none}
+.page4-nutrition-button{
+  position:absolute;
+  left:77.2%;
+  transform:translate(-50%, calc(-50% + 3px));
+  width:1.55em;
+  height:1.55em;
+  padding:0;
+  border:1px solid rgba(194,161,90,.92);
+  border-radius:50%;
+  display:grid;
+  place-items:center;
+  background:rgba(6,27,19,.90);
+  color:var(--sora-gold-light);
+  font:700 clamp(8px,1.55cqw,12px)/1 Arial,sans-serif;
+  cursor:pointer;
+  pointer-events:auto;
+  z-index:22;
+  box-shadow:0 1px 4px rgba(0,0,0,.28);
+}
+.page4-nutrition-button.is-active{
+  background:rgba(11,44,32,.98);
+}
+.page4-nutrition-panel{
+  position:absolute;
+  z-index:45;
+  left:31.2%;right:17.0%;
+  display:none;
+  padding:1.3% 1.55% 1.2%;
+  background:rgba(6,27,19,.978);
+  border:1px solid rgba(194,161,90,.90);
+  box-shadow:0 7px 20px rgba(0,0,0,.44);
+  color:var(--sora-white);
+  font-family:"Iowan Old Style","Palatino Linotype","Book Antiqua",Palatino,Georgia,serif;
+  line-height:1.2;
+}
+.page4-nutrition-panel.is-open{display:block}
+.page4-nutrition-panel:before{
+  content:"";position:absolute;inset:4px;
+  border:1px solid rgba(169,131,63,.20);pointer-events:none;
+}
+.page4-nutrition-head{position:relative;z-index:1;display:flex;justify-content:space-between;align-items:baseline;gap:1em;padding-right:1.25em}
+.page4-nutrition-name{color:var(--sora-white);font-size:clamp(9px,1.90cqw,14.5px);font-weight:600}
+.page4-nutrition-kcal{color:var(--sora-gold-light);font-size:clamp(9px,1.84cqw,14px);white-space:nowrap}
+.page4-nutrition-macros{position:relative;z-index:1;display:flex;flex-wrap:wrap;gap:.35em 1.05em;margin-top:.55em;color:rgba(239,229,207,.93);font-size:clamp(7px,1.42cqw,10.8px)}
+.page4-nutrition-allergens{position:relative;z-index:1;margin-top:.55em;padding-top:.48em;border-top:1px solid rgba(169,131,63,.28);color:rgba(239,229,207,.92);font-size:clamp(7px,1.42cqw,10.8px)}
+.page4-nutrition-allergens strong{color:var(--sora-gold-light)}
+.page4-nutrition-close{position:absolute;z-index:2;right:.35em;top:.18em;padding:0;border:0;background:transparent;color:var(--sora-gold-light);font:400 clamp(12px,2.1cqw,16px)/1 Arial,sans-serif;cursor:pointer}
+
+
+
+
+/* ==========================================================
+   5. SAYFA — PAGE 4 İLE AYNI KOLON MANTIĞI
+   ========================================================== */
+.page5-coded-page{container-type:inline-size;position:relative}
+
+.page5-brand-overlay{
+  position:absolute;z-index:12;inset:0;
+  color:var(--sora-gold-light);
+  font-family:"Iowan Old Style","Palatino Linotype","Book Antiqua",Palatino,Georgia,serif;
+  pointer-events:none;
+}
+.page5-brand-sub{
+  position:absolute;left:31%;right:31%;top:14.15%;
+  display:block;text-align:center;
+  font-size:clamp(10px,2.02cqw,15.4px);line-height:1;
+  letter-spacing:.30em;white-space:nowrap;
+}
+.page5-brand-rule{
+  position:absolute;left:31%;right:31%;top:17.92%;
+  height:1px;margin:0;
+  background:linear-gradient(90deg,var(--sora-gold-light) 0 42%,transparent 42% 58%,var(--sora-gold-light) 58% 100%);
+}
+.page5-brand-rule:after{
+  content:"";position:absolute;left:50%;top:50%;
+  width:1.55em;height:1.55em;transform:translate(-50%,-50%);
+  border:1px solid var(--sora-gold-light);border-radius:50%;background:var(--sora-green);
+}
+
+.page5-coded-menu{
+  position:absolute;z-index:10;left:26%;right:23.5%;top:21.2%;height:61.7%;
+  display:grid;
+  /* Ebi Maki kaldırıldıktan sonraki 6 Maki + 3 vejetaryen ürün için
+     boşluk bırakmadan, onaylı sayfadaki dikey ritmi koruyan satırlar. */
+  grid-template-rows:8.10% 6.73% 5.75% 5.87% 5.92% 5.87% 10.05% 11.10% 11.10% 14.59% 14.92%;
+  font-family:"Iowan Old Style","Palatino Linotype","Book Antiqua",Palatino,Georgia,serif;
+}
+
+.page5-coded-heading{
+  min-width:0;display:flex;align-items:center;gap:.46em;line-height:1;
+  color:var(--sora-gold-light);font-size:clamp(11px,2.34cqw,17.8px);
+  font-weight:700;letter-spacing:.075em;
+}
+.page5-coded-heading img{display:block;width:1.45em;height:1.45em;object-fit:contain;flex:0 0 auto}
+
+.page5-coded-item{
+  min-width:0;display:grid;
+  grid-template-columns:1.05em max-content minmax(1.4em,1fr) max-content 1.55em;
+  align-items:center;column-gap:.48em;color:var(--sora-white);line-height:1;
+}
+.page5-coded-item.has-description{grid-template-rows:auto auto;align-items:center;padding-top:0;row-gap:.24em}
+
+.page5-coded-flower{display:block;width:.92em;height:.92em;object-fit:contain;align-self:center}
+.page5-coded-item.has-description .page5-coded-flower{grid-row:1;align-self:center;margin-top:0}
+
+.page5-coded-copy{min-width:0;align-self:center;max-width:100%}
+.page5-coded-item.has-description .page5-coded-copy{grid-row:1;align-self:center}
+
+.page5-coded-topline{display:inline-flex;align-items:center;gap:.28em;min-width:0}
+.page5-coded-name{
+  color:var(--sora-white);font-size:clamp(8.8px,1.98cqw,15.1px);
+  font-weight:500;letter-spacing:-.01em;white-space:nowrap;text-shadow:0 1px 1px rgba(0,0,0,.35);
+}
+.page5-coded-icons{display:inline-flex;align-items:center;gap:.12em;flex:0 0 auto}
+.page5-coded-icon{display:block;width:.80em;height:.80em;object-fit:contain}
+
+.page5-coded-leader{
+  align-self:center;min-width:.8em;border-bottom:1px dotted rgba(169,131,63,.76);
+  transform:translateY(.08em);
+}
+.page5-coded-item.has-description .page5-coded-leader{grid-row:1;align-self:center;margin-top:0}
+
+.page5-coded-price{
+  color:var(--sora-gold-light);font-size:clamp(8.8px,1.98cqw,15.1px);
+  font-weight:500;white-space:nowrap;text-shadow:0 1px 1px rgba(0,0,0,.35);align-self:center;
+}
+.page5-coded-item.has-description .page5-coded-price{grid-row:1;align-self:center;margin-top:0}
+
+.page5-coded-toggle{
+  width:1.55em;height:1.55em;padding:0;border:1px solid rgba(194,161,90,.92);
+  border-radius:50%;display:grid;place-items:center;background:rgba(6,27,19,.90);
+  color:var(--sora-gold-light);font:700 clamp(8px,1.55cqw,12px)/1 Arial,sans-serif;
+  cursor:pointer;box-shadow:0 1px 4px rgba(0,0,0,.28);align-self:center;
+}
+.page5-coded-item.has-description .page5-coded-toggle{grid-row:1;align-self:center;margin-top:0}
+.page5-coded-toggle.is-active{background:rgba(11,44,32,.98)}
+
+.page5-coded-desc{
+  grid-column:2 / 5;grid-row:2;display:block;margin:0;min-width:0;
+  color:rgba(239,229,207,.92);font-size:clamp(7.8px,1.48cqw,11.3px);
+  font-style:normal;line-height:1.30;white-space:normal;max-width:100%;
+  text-shadow:0 1px 1px rgba(0,0,0,.35);
+}
+
+.page5-coded-panel{
+  position:absolute;z-index:45;left:27%;right:22%;display:none;
+  line-height:1.2;
+  padding:1.25% 1.55% 1.15%;background:rgba(6,27,19,.982);
+  border:1px solid rgba(194,161,90,.90);box-shadow:0 7px 20px rgba(0,0,0,.44);
+  color:var(--sora-white);
+  font-family:"Iowan Old Style","Palatino Linotype","Book Antiqua",Palatino,Georgia,serif;
+}
+.page5-coded-panel.is-open{display:block}
+.page5-coded-panel:before{content:"";position:absolute;inset:4px;border:1px solid rgba(169,131,63,.20);pointer-events:none}
+.page5-coded-panel-head{position:relative;z-index:1;display:flex;justify-content:space-between;align-items:baseline;gap:1em;padding-right:1.25em}
+.page5-coded-panel-name{color:var(--sora-white);font-size:clamp(9px,1.90cqw,14.5px);font-weight:600}
+.page5-coded-panel-kcal{color:var(--sora-gold-light);font-size:clamp(9px,1.84cqw,14px);white-space:nowrap}
+.page5-coded-panel-macros{line-height:1.25;position:relative;z-index:1;display:flex;flex-wrap:wrap;gap:.35em 1.05em;margin-top:.55em;color:rgba(239,229,207,.93);font-size:clamp(7px,1.42cqw,10.8px)}
+.page5-coded-panel-allergens{position:relative;z-index:1;margin-top:.55em;padding-top:.48em;border-top:1px solid rgba(169,131,63,.28);color:rgba(239,229,207,.92);font-size:clamp(7px,1.42cqw,10.8px);line-height:1.25}
+.page5-coded-panel-allergens strong{color:var(--sora-gold-light)}
+.page5-coded-close{position:absolute;z-index:2;right:.35em;top:.18em;padding:0;border:0;background:transparent;color:var(--sora-gold-light);font:400 clamp(12px,2.1cqw,16px)/1 Arial,sans-serif;cursor:pointer}
+
+/* ==========================================================
+   5. SAYFA — ONAYLI GÖRSEL KİLİTLİ + BESİN HOTSPOTLARI
+   Tasarım görselin içinde sabittir; CSS yalnızca tıklama alanı ve paneli yönetir.
+   ========================================================== */
+.page5-approved-page{position:relative;container-type:inline-size}
+.page5-nutrition-hotspots{position:absolute;z-index:30;inset:0;pointer-events:none}
+.page5-nutrition-button{
+  position:absolute;
+  left:79.208%;
+  width:6.2%;
+  height:3.05%;
+  transform:translate(-50%,-50%);
+  padding:0;
+  border:0;
+  border-radius:50%;
+  background:transparent;
+  color:transparent;
+  cursor:pointer;
+  pointer-events:auto;
+  outline:none;
+  touch-action:manipulation;
+  -webkit-tap-highlight-color:transparent;
+}
+.page5-nutrition-button:focus-visible{
+  outline:2px solid rgba(223,191,114,.9);
+  outline-offset:2px;
+}
+.page5-nutrition-panel{
+  position:absolute;
+  z-index:45;
+  left:29.4%;right:18.2%;
+  display:none;
+  padding:1.25% 1.55% 1.15%;
+  background:rgba(6,27,19,.982);
+  border:1px solid rgba(194,161,90,.90);
+  box-shadow:0 7px 20px rgba(0,0,0,.44);
+  color:var(--sora-white);
+  font-family:"Iowan Old Style","Palatino Linotype","Book Antiqua",Palatino,Georgia,serif;
+  line-height:1.2;
+}
+.page5-nutrition-panel.is-open{display:block}
+.page5-nutrition-panel:before{content:"";position:absolute;inset:4px;border:1px solid rgba(169,131,63,.20);pointer-events:none}
+.page5-nutrition-head{position:relative;z-index:1;display:flex;justify-content:space-between;align-items:baseline;gap:1em;padding-right:1.25em}
+.page5-nutrition-name{color:var(--sora-white);font-size:clamp(9px,1.90cqw,14.5px);font-weight:600}
+.page5-nutrition-kcal{color:var(--sora-gold-light);font-size:clamp(9px,1.84cqw,14px);white-space:nowrap}
+.page5-nutrition-macros{position:relative;z-index:1;display:flex;flex-wrap:wrap;gap:.35em 1.05em;margin-top:.55em;color:rgba(239,229,207,.93);font-size:clamp(7px,1.42cqw,10.8px)}
+.page5-nutrition-allergens{position:relative;z-index:1;margin-top:.55em;padding-top:.48em;border-top:1px solid rgba(169,131,63,.28);color:rgba(239,229,207,.92);font-size:clamp(7px,1.42cqw,10.8px);line-height:1.25}
+.page5-nutrition-allergens strong{color:var(--sora-gold-light)}
+.page5-nutrition-close{position:absolute;z-index:2;right:.35em;top:.18em;padding:0;border:0;background:transparent;color:var(--sora-gold-light);font:400 clamp(12px,2.1cqw,16px)/1 Arial,sans-serif;cursor:pointer}
+
+
+/* ==========================================================
+   6. SAYFA — ONAYLI SPECIAL ROLLS GÖRSELİ + BESİN/ALERJEN
+   Görsel kilitlidir; yalnızca + düğmeleri ve açılır bilgi kartı üst katmandadır.
+   ========================================================== */
+.page6-approved-page{position:relative;container-type:inline-size}
+.page6-nutrition-hotspots{position:absolute;z-index:30;inset:0;pointer-events:none}
+.page6-nutrition-button{
+  position:absolute;
+  left:81.05%;
+  transform:translate(-50%,-50%);
+  width:1.55em;
+  height:1.55em;
+  padding:0;
+  border:1px solid rgba(194,161,90,.96);
+  border-radius:50%;
+  display:grid;
+  place-items:center;
+  background:rgba(6,27,19,.92);
+  color:var(--sora-gold-light);
+  font:700 clamp(8px,1.55cqw,12px)/1 Arial,sans-serif;
+  cursor:pointer;
+  pointer-events:auto;
+  z-index:32;
+  box-shadow:0 1px 4px rgba(0,0,0,.34);
+  touch-action:manipulation;
+  -webkit-tap-highlight-color:transparent;
+}
+.page6-nutrition-button.is-active{background:rgba(11,44,32,.99)}
+.page6-nutrition-button:focus-visible{outline:2px solid rgba(223,191,114,.9);outline-offset:2px}
+
+.page6-nutrition-panel{
+  position:absolute;
+  z-index:45;
+  left:29.4%;right:18.2%;
+  display:none;
+  padding:1.25% 1.55% 1.15%;
+  background:rgba(6,27,19,.982);
+  border:1px solid rgba(194,161,90,.90);
+  box-shadow:0 7px 20px rgba(0,0,0,.44);
+  color:var(--sora-white);
+  font-family:"Iowan Old Style","Palatino Linotype","Book Antiqua",Palatino,Georgia,serif;
+  line-height:1.2;
+}
+.page6-nutrition-panel.is-open{display:block}
+.page6-nutrition-panel:before{content:"";position:absolute;inset:4px;border:1px solid rgba(169,131,63,.20);pointer-events:none}
+.page6-nutrition-head{position:relative;z-index:1;display:flex;justify-content:space-between;align-items:baseline;gap:1em;padding-right:1.25em}
+.page6-nutrition-name{color:var(--sora-white);font-size:clamp(9px,1.90cqw,14.5px);font-weight:600}
+.page6-nutrition-kcal{color:var(--sora-gold-light);font-size:clamp(9px,1.84cqw,14px);white-space:nowrap}
+.page6-nutrition-macros{position:relative;z-index:1;display:flex;flex-wrap:wrap;gap:.35em 1.05em;margin-top:.55em;color:rgba(239,229,207,.93);font-size:clamp(7px,1.42cqw,10.8px)}
+.page6-nutrition-allergens{position:relative;z-index:1;margin-top:.55em;padding-top:.48em;border-top:1px solid rgba(169,131,63,.28);color:rgba(239,229,207,.92);font-size:clamp(7px,1.42cqw,10.8px);line-height:1.25}
+.page6-nutrition-allergens strong{color:var(--sora-gold-light)}
+.page6-nutrition-close{position:absolute;z-index:2;right:.35em;top:.18em;padding:0;border:0;background:transparent;color:var(--sora-gold-light);font:400 clamp(12px,2.1cqw,16px)/1 Arial,sans-serif;cursor:pointer}
+
+/* ==========================================================
+   7. SAYFA — SPECIAL ROLLS / ÇİĞ ROLLER
+   ========================================================== */
+.page7-approved-page{position:relative;container-type:inline-size}
+.page7-nutrition-hotspots{position:absolute;inset:0;z-index:60;pointer-events:none}
+.page7-nutrition-button{
+  position:absolute;
+  left:82.555%;
+  transform:translate(-50%,-50%);
+  width:6.0%;
+  height:4.0%;
+  min-width:36px;
+  min-height:36px;
+  padding:0;
+  border:0;
+  border-radius:50%;
+  background:transparent;
+  color:transparent;
+  cursor:pointer;
+  pointer-events:auto;
+  outline:none;
+  touch-action:manipulation;
+  -webkit-tap-highlight-color:transparent;
+}
+.page7-nutrition-button:focus-visible{
+  outline:2px solid rgba(223,191,114,.9);
+  outline-offset:2px;
+}
+.page7-nutrition-panel{
+  position:absolute;
+  z-index:100;
+  left:26.5%;
+  right:17.5%;
+  display:none;
+  padding:1.35% 1.65% 1.2%;
+  background:rgba(6,27,19,.985);
+  border:1px solid rgba(194,161,90,.90);
+  box-shadow:0 8px 24px rgba(0,0,0,.55);
+  color:var(--sora-white);
+  font-family:"Iowan Old Style","Palatino Linotype","Book Antiqua",Palatino,Georgia,serif;
+  line-height:1.25;
+}
+.page7-nutrition-panel.is-open{display:block}
+.page7-nutrition-panel:before{content:"";position:absolute;inset:4px;border:1px solid rgba(169,131,63,.20);pointer-events:none}
+.page7-nutrition-head{position:relative;z-index:1;display:flex;justify-content:space-between;align-items:baseline;gap:1em;padding-right:1.25em}
+.page7-nutrition-name{color:var(--sora-white);font-size:clamp(9px,1.90cqw,14.5px);font-weight:600}
+.page7-nutrition-kcal{color:var(--sora-gold-light);font-size:clamp(9px,1.84cqw,14px);white-space:nowrap}
+.page7-nutrition-macros{position:relative;z-index:1;display:flex;flex-wrap:wrap;gap:.35em 1.05em;margin-top:.55em;color:rgba(239,229,207,.93);font-size:clamp(7px,1.42cqw,10.8px)}
+.page7-nutrition-allergens{position:relative;z-index:1;margin-top:.55em;padding-top:.48em;border-top:1px solid rgba(169,131,63,.28);color:rgba(239,229,207,.92);font-size:clamp(7px,1.42cqw,10.8px);line-height:1.25}
+.page7-nutrition-allergens strong{color:var(--sora-gold-light)}
+.page7-nutrition-close{position:absolute;z-index:2;right:.35em;top:.18em;padding:0;border:0;background:transparent;color:var(--sora-gold-light);font:400 clamp(12px,2.1cqw,16px)/1 Arial,sans-serif;cursor:pointer}
+
+/* ==========================================================
+   8. SAYFA — ANA YEMEKLER & IZGARALAR
+   ========================================================== */
+.page8-approved-page{position:relative;container-type:inline-size}
+.page8-nutrition-hotspots{position:absolute;inset:0;z-index:60;pointer-events:none}
+.page8-nutrition-button{
+  position:absolute;
+  left:77.738%;
+  transform:translate(-50%,-50%);
+  width:6.0%;
+  height:4.0%;
+  min-width:36px;
+  min-height:36px;
+  padding:0;
+  border:0;
+  border-radius:50%;
+  background:transparent;
+  color:transparent;
+  cursor:pointer;
+  pointer-events:auto;
+  outline:none;
+  touch-action:manipulation;
+  -webkit-tap-highlight-color:transparent;
+}
+.page8-nutrition-button:focus-visible{
+  outline:2px solid rgba(223,191,114,.9);
+  outline-offset:2px;
+}
+.page8-nutrition-panel{
+  position:absolute;
+  z-index:100;
+  left:26.5%;
+  right:17.5%;
+  display:none;
+  padding:1.35% 1.65% 1.2%;
+  background:rgba(6,27,19,.985);
+  border:1px solid rgba(194,161,90,.90);
+  box-shadow:0 8px 24px rgba(0,0,0,.55);
+  color:var(--sora-white);
+  font-family:"Iowan Old Style","Palatino Linotype","Book Antiqua",Palatino,Georgia,serif;
+  line-height:1.25;
+}
+.page8-nutrition-panel.is-open{display:block}
+.page8-nutrition-panel:before{content:"";position:absolute;inset:4px;border:1px solid rgba(169,131,63,.20);pointer-events:none}
+.page8-nutrition-head{position:relative;z-index:1;display:flex;justify-content:space-between;align-items:baseline;gap:1em;padding-right:1.25em}
+.page8-nutrition-name{color:var(--sora-white);font-size:clamp(9px,1.90cqw,14.5px);font-weight:600}
+.page8-nutrition-kcal{color:var(--sora-gold-light);font-size:clamp(9px,1.84cqw,14px);white-space:nowrap}
+.page8-nutrition-macros{position:relative;z-index:1;display:flex;flex-wrap:wrap;gap:.35em 1.05em;margin-top:.55em;color:rgba(239,229,207,.93);font-size:clamp(7px,1.42cqw,10.8px)}
+.page8-nutrition-allergens{position:relative;z-index:1;margin-top:.55em;padding-top:.48em;border-top:1px solid rgba(169,131,63,.28);color:rgba(239,229,207,.92);font-size:clamp(7px,1.42cqw,10.8px);line-height:1.25}
+.page8-nutrition-allergens strong{color:var(--sora-gold-light)}
+.page8-nutrition-note{position:relative;z-index:1;margin-top:.55em;color:rgba(239,229,207,.72);font-size:clamp(6.5px,1.30cqw,10px);line-height:1.25;font-style:italic}
+.page8-nutrition-close{position:absolute;z-index:2;right:.35em;top:.18em;padding:0;border:0;background:transparent;color:var(--sora-gold-light);font:400 clamp(12px,2.1cqw,16px)/1 Arial,sans-serif;cursor:pointer}
+
+
+/* ==========================================================
+   9. SAYFA — TATLILAR & İÇECEKLER
+   Onaylı görsel kilitlidir; yalnızca + düğmeleri ve açılır bilgi kartı üst katmandadır.
+   Bu görsel 2:3 oranındadır; tasarımın kırpılmaması için sayfa oranı korunur.
+   ========================================================== */
+.page9-approved-page{position:relative;container-type:inline-size;aspect-ratio:1086 / 1448}
+.page9-approved-page .page-art{object-fit:cover}
+.page9-nutrition-hotspots{position:absolute;inset:0;z-index:60;pointer-events:none}
+.page9-nutrition-button{
+  position:absolute;
+  left:79.131%;
+  transform:translate(-50%,-50%);
+  width:5.4%;
+  height:3.15%;
+  min-width:34px;
+  min-height:34px;
+  padding:0;
+  border:0;
+  border-radius:50%;
+  background:transparent;
+  color:transparent;
+  cursor:pointer;
+  pointer-events:auto;
+  outline:none;
+  touch-action:manipulation;
+  -webkit-tap-highlight-color:transparent;
+}
+.page9-nutrition-button:focus-visible{
+  outline:2px solid rgba(223,191,114,.9);
+  outline-offset:2px;
+}
+.page9-nutrition-panel{
+  position:absolute;
+  z-index:100;
+  left:26.0%;
+  right:16.2%;
+  display:none;
+  padding:1.25% 1.55% 1.15%;
+  background:rgba(6,27,19,.985);
+  border:1px solid rgba(194,161,90,.90);
+  box-shadow:0 8px 24px rgba(0,0,0,.55);
+  color:var(--sora-white);
+  font-family:"Iowan Old Style","Palatino Linotype","Book Antiqua",Palatino,Georgia,serif;
+  line-height:1.25;
+}
+.page9-nutrition-panel.is-open{display:block}
+.page9-nutrition-panel:before{content:"";position:absolute;inset:4px;border:1px solid rgba(169,131,63,.20);pointer-events:none}
+.page9-nutrition-head{position:relative;z-index:1;display:flex;justify-content:space-between;align-items:baseline;gap:1em;padding-right:1.25em}
+.page9-nutrition-name{color:var(--sora-white);font-size:clamp(9px,1.90cqw,14.5px);font-weight:600}
+.page9-nutrition-kcal{color:var(--sora-gold-light);font-size:clamp(9px,1.84cqw,14px);white-space:nowrap}
+.page9-nutrition-macros{position:relative;z-index:1;display:flex;flex-wrap:wrap;gap:.35em 1.05em;margin-top:.55em;color:rgba(239,229,207,.93);font-size:clamp(7px,1.42cqw,10.8px)}
+.page9-nutrition-allergens{position:relative;z-index:1;margin-top:.55em;padding-top:.48em;border-top:1px solid rgba(169,131,63,.28);color:rgba(239,229,207,.92);font-size:clamp(7px,1.42cqw,10.8px);line-height:1.25}
+.page9-nutrition-allergens strong{color:var(--sora-gold-light)}
+.page9-nutrition-note{position:relative;z-index:1;margin-top:.55em;color:rgba(239,229,207,.72);font-size:clamp(6.5px,1.30cqw,10px);line-height:1.25;font-style:italic}
+.page9-nutrition-close{position:absolute;z-index:2;right:.35em;top:.18em;padding:0;border:0;background:transparent;color:var(--sora-gold-light);font:400 clamp(12px,2.1cqw,16px)/1 Arial,sans-serif;cursor:pointer}
+
+.page10-approved-page{position:relative;container-type:inline-size;aspect-ratio:2 / 3}
+.page10-approved-page .page-art{object-fit:cover}
+.page10-nutrition-hotspots{position:absolute;inset:0;z-index:60;pointer-events:none}
+.page10-nutrition-button{
+  position:absolute;
+  left:91.65%;
+  width:4.20%;
+  aspect-ratio:1 / 1;
+  transform:translate(-50%, -50%);
+  border-radius:50%;
+  border:0;
+  background:transparent;
+  cursor:pointer;
+  pointer-events:auto;
+  box-shadow:none;
+  appearance:none;
+}
+.page10-nutrition-button::before{content:"";position:absolute;inset:0;border-radius:50%;background:transparent}
+.page10-nutrition-button.is-active::before,.page10-nutrition-button:hover::before,.page10-nutrition-button:focus-visible::before{background:rgba(223,191,114,.12);box-shadow:0 0 0 1px rgba(223,191,114,.28) inset}
+.page10-nutrition-button:focus-visible{outline:none}
+.page10-nutrition-panel{
+  position:absolute;left:50%;top:50%;transform:translateX(-50%);z-index:70;display:none;
+  width:min(78%,680px);padding:clamp(10px,1.35cqw,15px) clamp(11px,1.6cqw,18px);
+  background:rgba(6,27,19,.98);border:1px solid rgba(169,131,63,.46);box-shadow:0 12px 30px rgba(0,0,0,.35);
+  border-radius:18px;backdrop-filter:blur(4px)
+}
+.page10-nutrition-panel.is-open{display:block}
+.page10-nutrition-panel:before{content:"";position:absolute;inset:4px;border:1px solid rgba(169,131,63,.20);pointer-events:none}
+.page10-nutrition-head{position:relative;z-index:1;display:flex;justify-content:space-between;align-items:baseline;gap:1em;padding-right:1.25em}
+.page10-nutrition-name{color:var(--sora-white);font-size:clamp(9px,1.90cqw,14.5px);font-weight:600}
+.page10-nutrition-kcal{color:var(--sora-gold-light);font-size:clamp(9px,1.84cqw,14px);white-space:nowrap}
+.page10-nutrition-macros{position:relative;z-index:1;display:flex;flex-wrap:wrap;gap:.35em 1.05em;margin-top:.55em;color:rgba(239,229,207,.93);font-size:clamp(7px,1.42cqw,10.8px)}
+.page10-nutrition-allergens{position:relative;z-index:1;margin-top:.55em;padding-top:.48em;border-top:1px solid rgba(169,131,63,.28);color:rgba(239,229,207,.92);font-size:clamp(7px,1.42cqw,10.8px);line-height:1.25}
+.page10-nutrition-allergens strong{color:var(--sora-gold-light)}
+.page10-nutrition-note{position:relative;z-index:1;margin-top:.55em;color:rgba(239,229,207,.72);font-size:clamp(6.5px,1.30cqw,10px);line-height:1.25;font-style:italic}
+.page10-nutrition-close{position:absolute;z-index:2;right:.35em;top:.18em;padding:0;border:0;background:transparent;color:var(--sora-gold-light);font:400 clamp(12px,2.1cqw,16px)/1 Arial,sans-serif;cursor:pointer}
+
+
+/* California Sora açıklaması menu-data.js'den okunur.
+   Alttaki kilitli görseldeki eski açıklama, mevcut temiz arka plan görselinin
+   sadece o satıra denk gelen bölümüyle kod üzerinden kapatılır. */
+.page7-california-clean-patch{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  object-fit:fill;
+  z-index:44;
+  pointer-events:none;
+  clip-path:inset(55.15% 28.5% 42.75% 25.2%);
+}
+.page7-california-description{
+  position:absolute;
+  z-index:45;
+  left:26.55%;
+  top:55.53%;
+  width:45.5%;
+  color:#a2a6a2;
+  font-family:"Iowan Old Style","Palatino Linotype","Book Antiqua",Palatino,Georgia,serif;
+  font-size:clamp(8px,1.42cqw,15.4px);
+  font-weight:400;
+  line-height:1.15;
+  white-space:nowrap;
+  text-shadow:0 1px 1px rgba(0,0,0,.15);
+  pointer-events:none;
+}
+
+
+/* ==========================================================
+   7. SAYFA — ÇİĞ ROLLER / KODDAN ÇİZİLEN MENÜ
+   13 ürün için mevcut onaylı sayfanın ritmi sıkıştırılarak korunur.
+   ========================================================== */
+.page7-coded-page{position:relative;container-type:inline-size}
+.page7-coded-menu{
+  position:absolute;z-index:48;left:23.5%;right:15.0%;top:26.2%;height:65.3%;
+  display:grid;grid-template-rows:repeat(13,minmax(0,1fr));
+  font-family:"Iowan Old Style","Palatino Linotype","Book Antiqua",Palatino,Georgia,serif;
+}
+.page7-coded-item{
+  min-width:0;display:grid;
+  grid-template-columns:1.05em minmax(0,max-content) minmax(1.1em,1fr) max-content 1.55em;
+  grid-template-rows:auto auto;align-content:center;align-items:center;
+  column-gap:.42em;row-gap:.11em;color:var(--sora-white);line-height:1;
+}
+.page7-coded-flower{grid-row:1;display:block;width:.90em;height:.90em;object-fit:contain;align-self:center}
+.page7-coded-copy{grid-row:1 / 3;min-width:0;align-self:center}
+.page7-coded-topline{display:flex;align-items:center;gap:.24em;min-width:0;line-height:1}
+.page7-coded-name{
+  color:var(--sora-white);font-size:clamp(8.5px,1.72cqw,14.7px);font-weight:500;
+  letter-spacing:-.01em;white-space:nowrap;text-shadow:0 1px 1px rgba(0,0,0,.35)
+}
+.page7-coded-icons{display:inline-flex;align-items:center;gap:.10em;flex:0 0 auto}
+.page7-coded-icon{display:block;width:.78em;height:.78em;object-fit:contain}
+.page7-coded-desc{
+  margin-top:.26em;color:rgba(239,229,207,.88);font-size:clamp(7px,1.18cqw,10.6px);
+  font-weight:400;line-height:1.12;white-space:nowrap;overflow:visible;
+  text-shadow:0 1px 1px rgba(0,0,0,.30)
+}
+.page7-coded-leader{
+  grid-row:1;align-self:center;min-width:.6em;border-bottom:1px dotted rgba(169,131,63,.78);
+  transform:translateY(.08em)
+}
+.page7-coded-price{
+  grid-row:1;color:var(--sora-gold-light);font-size:clamp(8.5px,1.72cqw,14.7px);
+  font-weight:500;white-space:nowrap;text-shadow:0 1px 1px rgba(0,0,0,.35)
+}
+.page7-coded-toggle{
+  grid-row:1;width:1.55em;height:1.55em;padding:0;border:1px solid rgba(194,161,90,.94);
+  border-radius:50%;display:grid;place-items:center;background:rgba(6,27,19,.86);
+  color:var(--sora-gold-light);font:700 clamp(8px,1.42cqw,11.5px)/1 Arial,sans-serif;
+  cursor:pointer;box-shadow:0 1px 4px rgba(0,0,0,.28)
+}
+.page7-coded-toggle.is-active{background:rgba(11,44,32,.98)}
+.page7-coded-panel{
+  position:absolute;z-index:100;left:26.5%;right:17.5%;display:none;line-height:1.25;
+  padding:1.25% 1.55% 1.15%;background:rgba(6,27,19,.985);
+  border:1px solid rgba(194,161,90,.90);box-shadow:0 8px 24px rgba(0,0,0,.55);
+  color:var(--sora-white);font-family:"Iowan Old Style","Palatino Linotype","Book Antiqua",Palatino,Georgia,serif;
+}
+.page7-coded-panel.is-open{display:block}
+.page7-coded-panel:before{content:"";position:absolute;inset:4px;border:1px solid rgba(169,131,63,.20);pointer-events:none}
+.page7-coded-panel-head{position:relative;z-index:1;display:flex;justify-content:space-between;align-items:baseline;gap:1em;padding-right:1.25em}
+.page7-coded-panel-name{color:var(--sora-white);font-size:clamp(9px,1.90cqw,14.5px);font-weight:600}
+.page7-coded-panel-kcal{color:var(--sora-gold-light);font-size:clamp(9px,1.84cqw,14px);white-space:nowrap}
+.page7-coded-panel-macros{position:relative;z-index:1;display:flex;flex-wrap:wrap;gap:.35em 1.05em;margin-top:.55em;color:rgba(239,229,207,.93);font-size:clamp(7px,1.42cqw,10.8px);line-height:1.25}
+.page7-coded-panel-allergens{position:relative;z-index:1;margin-top:.55em;padding-top:.48em;border-top:1px solid rgba(169,131,63,.28);color:rgba(239,229,207,.92);font-size:clamp(7px,1.42cqw,10.8px);line-height:1.25}
+.page7-coded-panel-allergens strong{color:var(--sora-gold-light)}
+.page7-coded-close{position:absolute;z-index:2;right:.35em;top:.18em;padding:0;border:0;background:transparent;color:var(--sora-gold-light);font:400 clamp(12px,2.1cqw,16px)/1 Arial,sans-serif;cursor:pointer}

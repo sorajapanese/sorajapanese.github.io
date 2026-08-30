@@ -1,26 +1,22 @@
-SORA QR MENU — DÜZENLENEBİLİR SÜRÜM
+SORA QR MENU — 1–5 SAYFA / PAGE 5 LOCKED FINAL
 
-ANA KURAL:
-Ürün/fiyat/açıklama değişiklikleri için sadece menu-data.js dosyasını düzenleyin.
+5. sayfa page 4 satır mimarisiyle:
+çiçek | ürün+ikon | noktalı çizgi | fiyat | +
 
-ÖRNEK FİYAT DEĞİŞİKLİĞİ:
-{ name: "Edamame", price: 290 }
-→
-{ name: "Edamame", price: 320 }
+Vejetaryen açıklamaları ürün hücresinin altındadır; fiyat ve + ürün adı hizasında kalır.
+JAPANESE DINING tek kez görünür.
+Besin/alergen açılır paneli çalışır.
 
-ÜRÜN SİLME:
-İlgili { name: ..., price: ... } satırını silin.
 
-YENİ ÜRÜN EKLEME:
-Aynı kategori içindeki items: [ ... ] listesine yeni bir obje ekleyin.
-Örn: { name: "Yeni Ürün", price: 450 },
+6. sayfa eklendi: SPECIAL ROLLS / PİŞMİŞ ROLLER. + düğmeleri ürün bazında yaklaşık besin değerleri ve alerjen bilgisini açar.
 
-AÇIKLAMALI ÜRÜN:
-{ name: "Lemon Sea", price: 620, description: "Levrek, peynir..." }
+Page 6 updated: approved Special Rolls artwork with nutrition/allergen toggle buttons integrated.
 
-TASARIM DOSYALARI:
-style.css = görünüm ve responsive kurallar
-menu-render.js = menu-data.js verisini sayfalara basar
-assets/sora-menu-page3-bg.png = 3–11. sayfaların ortak master arka planı
+Master icon set locked: spicy=page6 chili; vegetarian=existing leaf; raw=page4 fish; seafood=new shell. Only icon-related elements revised.
 
-Kapak ve hikâye sayfaları görsel olarak korunmuştur.
+
+7. sayfa eklendi: SPECIAL ROLLS / ÇİĞ ROLLER. Onaylanan sayfa görseli 7. sayfa olarak mevcut 6 sayfalık menüye eklenmiştir. İlk 6 sayfanın kodu ve çalışma biçimi değiştirilmemiştir.
+
+9. sayfa eklendi: TATLILAR / SOĞUK İÇECEKLER / SICAK İÇECEKLER.
+Onaylanan son tasarım görseli korunmuştur; ürünlerin yanındaki + alanları tıklanarak yaklaşık besin değerleri ve alerjen bilgileri açılır.
+İlk 8 sayfanın mevcut dosyaları ve çalışma biçimi korunmuştur.
