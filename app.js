@@ -186,13 +186,13 @@
     const container = document.getElementById('page5-coded-menu');
     if (!page || !container || !Array.isArray(items)) return;
 
-    const maki = items.slice(0, 6);
-    const veg = items.slice(6);
+    const maki = items.slice(0, 7);
+    const veg = items.slice(7);
     const fragment = document.createDocumentFragment();
 
-    const addHeading = (title) => {
+    const addHeading = (title, extraClass = '') => {
       const heading = document.createElement('div');
-      heading.className = 'page5-coded-heading';
+      heading.className = `page5-coded-heading${extraClass ? ' ' + extraClass : ''}`;
       const flower = document.createElement('img');
       flower.src = 'assets/menu-flower-master.png';
       flower.alt = '';
@@ -226,9 +226,9 @@
     };
     panel.querySelector('.page5-coded-close').addEventListener('click', close);
 
-    const addItem = (item) => {
+    const addItem = (item, extraClass = '') => {
       const row = document.createElement('div');
-      row.className = `page5-coded-item${item.description ? ' has-description' : ''}`;
+      row.className = `page5-coded-item${item.description ? ' has-description' : ''}${extraClass ? ' ' + extraClass : ''}`;
 
       const flower = document.createElement('img');
       flower.className = 'page5-coded-flower';
@@ -316,8 +316,8 @@
 
     addHeading('MAKI ROLLS');
     maki.forEach(addItem);
-    addHeading('VEJETARYEN ROLLS');
-    veg.forEach(addItem);
+    addHeading('VEJETARYEN ROLLS', 'page5-veg-heading');
+    veg.forEach((item, index) => addItem(item, `page5-veg-item${index === veg.length - 1 ? ' page5-veg-item-last' : ''}`));
     container.replaceChildren(fragment);
   }
 
@@ -534,10 +534,12 @@
   }
 
 
-  function renderPage7Coded(items) {
-    const page = document.querySelector('.page7-coded-page');
-    const container = document.getElementById('page7-coded-menu');
+  function renderRollCoded(page, container, items, topPct, heightPct) {
     if (!page || !container || !Array.isArray(items)) return;
+
+    container.style.top = `${topPct}%`;
+    container.style.height = `${heightPct}%`;
+    container.style.gridTemplateRows = `repeat(${Math.max(items.length, 1)}, minmax(0, 1fr))`;
 
     let panel = page.querySelector('.page7-coded-panel');
     if (!panel) {
@@ -650,6 +652,21 @@
     container.replaceChildren(fragment);
   }
 
+  function renderPage6Coded(items) {
+    if (!Array.isArray(items)) return;
+    const pages = document.querySelectorAll('.page6-coded-page');
+    if (pages.length < 2) return;
+    const first = items.slice(0, 7);
+    const second = items.slice(7);
+    renderRollCoded(pages[0], document.getElementById('page6-coded-menu-1'), first, 33.0, 53.5);
+    renderRollCoded(pages[1], document.getElementById('page6-coded-menu-2'), second, 33.0, 53.5);
+  }
+
+  function renderPage7Coded(items) {
+    const page = document.querySelector('.page7-coded-page');
+    const container = document.getElementById('page7-coded-menu');
+    renderRollCoded(page, container, items, 26.2, 65.3);
+  }
 
   function syncPage7CaliforniaDescription() {
     const target = document.getElementById('page7-california-description');
@@ -967,10 +984,11 @@
   }
 
   if (typeof menuPages !== 'undefined') {
-    renderMenu('page3-menu', menuPages.page3);
+    renderMenu('page3a-menu', menuPages.page3a);
+    renderMenu('page3b-menu', menuPages.page3b);
     renderMenu('page4-menu', menuPages.page4);
     renderPage5Coded(menuPages.page5);
-    initPage6Nutrition();
+    renderPage6Coded(menuPages.page6);
     renderPage7Coded(menuPages.page7);
     initPage8Nutrition();
     initPage9Nutrition();

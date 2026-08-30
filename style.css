@@ -210,9 +210,11 @@ body{overflow-x:hidden}
    3. SAYFA - AÇILIR BESİN DEĞERİ / ALERJEN KATMANI
    Ana menü yerleşimi değiştirilmez; + düğmesi sağ boşlukta durur.
    ========================================================== */
-#page3-menu .menu-item{position:relative}
+.page3-start-menu .menu-item,
+.page3-salad-soup-menu .menu-item{position:relative}
 
-#page3-menu .nutrition-toggle{
+.page3-start-menu .nutrition-toggle,
+.page3-salad-soup-menu .nutrition-toggle{
   position:absolute;
   left:calc(100% + .72em);
   top:50%;
@@ -232,7 +234,8 @@ body{overflow-x:hidden}
   box-shadow:0 1px 4px rgba(0,0,0,.28);
 }
 
-#page3-menu .nutrition-toggle.is-active{
+.page3-start-menu .nutrition-toggle.is-active,
+.page3-salad-soup-menu .nutrition-toggle.is-active{
   background:rgba(11,44,32,.98);
 }
 
@@ -394,15 +397,15 @@ body{overflow-x:hidden}
 .page5-brand-rule:after{
   content:"";position:absolute;left:50%;top:50%;
   width:1.55em;height:1.55em;transform:translate(-50%,-50%);
-  border:1px solid var(--sora-gold-light);border-radius:50%;background:var(--sora-green);
+  border:1px solid var(--sora-gold-light);border-radius:50%;background:transparent;
 }
 
 .page5-coded-menu{
   position:absolute;z-index:10;left:26%;right:23.5%;top:21.2%;height:61.7%;
   display:grid;
-  /* Ebi Maki kaldırıldıktan sonraki 6 Maki + 3 vejetaryen ürün için
-     boşluk bırakmadan, onaylı sayfadaki dikey ritmi koruyan satırlar. */
-  grid-template-rows:8.10% 6.73% 5.75% 5.87% 5.92% 5.87% 10.05% 11.10% 11.10% 14.59% 14.92%;
+  /* 7 Maki + 3 vejetaryen ürün. Maki alanı kendi içinde sıklaştırılır;
+     Vejetaryen Rolls bölümü mevcut konumunda kalır. */
+  grid-template-rows:8.10% repeat(7,5.7414%) 11.10% 11.10% 14.59% 14.92%;
   font-family:"Iowan Old Style","Palatino Linotype","Book Antiqua",Palatino,Georgia,serif;
 }
 
@@ -751,37 +754,87 @@ body{overflow-x:hidden}
 .page10-nutrition-hotspots{position:absolute;inset:0;z-index:60;pointer-events:none}
 .page10-nutrition-button{
   position:absolute;
-  left:91.65%;
-  width:4.20%;
-  aspect-ratio:1 / 1;
-  transform:translate(-50%, -50%);
-  border-radius:50%;
+  left:79.15%;
+  width:5.4%;
+  height:3.15%;
+  min-width:34px;
+  min-height:34px;
+  padding:0;
+  transform:translate(-50%,-50%);
   border:0;
+  border-radius:50%;
   background:transparent;
+  color:transparent;
   cursor:pointer;
   pointer-events:auto;
+  outline:none;
   box-shadow:none;
   appearance:none;
+  touch-action:manipulation;
+  -webkit-tap-highlight-color:transparent;
 }
-.page10-nutrition-button::before{content:"";position:absolute;inset:0;border-radius:50%;background:transparent}
-.page10-nutrition-button.is-active::before,.page10-nutrition-button:hover::before,.page10-nutrition-button:focus-visible::before{background:rgba(223,191,114,.12);box-shadow:0 0 0 1px rgba(223,191,114,.28) inset}
-.page10-nutrition-button:focus-visible{outline:none}
+.page10-nutrition-button::before{content:none}
+.page10-nutrition-button:hover,
+.page10-nutrition-button:active,
+.page10-nutrition-button.is-active{
+  background:transparent;
+  box-shadow:none;
+}
+.page10-nutrition-button:focus-visible{
+  outline:none;
+  background:transparent;
+  box-shadow:none;
+}
 .page10-nutrition-panel{
-  position:absolute;left:50%;top:50%;transform:translateX(-50%);z-index:70;display:none;
-  width:min(78%,680px);padding:clamp(10px,1.35cqw,15px) clamp(11px,1.6cqw,18px);
-  background:rgba(6,27,19,.98);border:1px solid rgba(169,131,63,.46);box-shadow:0 12px 30px rgba(0,0,0,.35);
-  border-radius:18px;backdrop-filter:blur(4px)
+  position:absolute;
+  z-index:100;
+  left:26.0%;
+  right:16.2%;
+  width:auto;
+  transform:none;
+  display:none;
+  padding:1.35% 1.65% 1.25%;
+  background:rgba(6,27,19,.985);
+  border:1px solid rgba(194,161,90,.90);
+  border-radius:0;
+  box-shadow:0 8px 24px rgba(0,0,0,.55);
+  backdrop-filter:none;
+  color:var(--sora-white);
+  font-family:"Iowan Old Style","Palatino Linotype","Book Antiqua",Palatino,Georgia,serif;
+  line-height:1.25;
 }
 .page10-nutrition-panel.is-open{display:block}
 .page10-nutrition-panel:before{content:"";position:absolute;inset:4px;border:1px solid rgba(169,131,63,.20);pointer-events:none}
-.page10-nutrition-head{position:relative;z-index:1;display:flex;justify-content:space-between;align-items:baseline;gap:1em;padding-right:1.25em}
-.page10-nutrition-name{color:var(--sora-white);font-size:clamp(9px,1.90cqw,14.5px);font-weight:600}
-.page10-nutrition-kcal{color:var(--sora-gold-light);font-size:clamp(9px,1.84cqw,14px);white-space:nowrap}
-.page10-nutrition-macros{position:relative;z-index:1;display:flex;flex-wrap:wrap;gap:.35em 1.05em;margin-top:.55em;color:rgba(239,229,207,.93);font-size:clamp(7px,1.42cqw,10.8px)}
-.page10-nutrition-allergens{position:relative;z-index:1;margin-top:.55em;padding-top:.48em;border-top:1px solid rgba(169,131,63,.28);color:rgba(239,229,207,.92);font-size:clamp(7px,1.42cqw,10.8px);line-height:1.25}
+.page10-nutrition-head{
+  position:relative;z-index:1;display:flex;justify-content:space-between;align-items:flex-start;
+  gap:1em;padding-right:1.5em;margin:0 0 .55em;
+}
+.page10-nutrition-name{
+  display:block;color:var(--sora-white);font-size:clamp(9px,1.90cqw,14.5px);
+  font-weight:600;line-height:1.22;
+}
+.page10-nutrition-kcal{
+  display:block;color:var(--sora-gold-light);font-size:clamp(9px,1.84cqw,14px);
+  line-height:1.22;white-space:nowrap;
+}
+.page10-nutrition-macros{
+  position:relative;z-index:1;display:flex;flex-wrap:wrap;gap:.35em 1.05em;
+  margin:0 0 .62em;color:rgba(239,229,207,.93);font-size:clamp(7px,1.42cqw,10.8px);
+  line-height:1.35;
+}
+.page10-nutrition-allergens{
+  position:relative;z-index:1;margin:0;padding-top:.52em;border-top:1px solid rgba(169,131,63,.28);
+  color:rgba(239,229,207,.92);font-size:clamp(7px,1.42cqw,10.8px);line-height:1.35;
+}
 .page10-nutrition-allergens strong{color:var(--sora-gold-light)}
-.page10-nutrition-note{position:relative;z-index:1;margin-top:.55em;color:rgba(239,229,207,.72);font-size:clamp(6.5px,1.30cqw,10px);line-height:1.25;font-style:italic}
-.page10-nutrition-close{position:absolute;z-index:2;right:.35em;top:.18em;padding:0;border:0;background:transparent;color:var(--sora-gold-light);font:400 clamp(12px,2.1cqw,16px)/1 Arial,sans-serif;cursor:pointer}
+.page10-nutrition-note{
+  position:relative;z-index:1;margin-top:.62em;color:rgba(239,229,207,.72);
+  font-size:clamp(6.5px,1.30cqw,10px);line-height:1.35;font-style:italic;
+}
+.page10-nutrition-close{
+  position:absolute;z-index:2;right:.45em;top:.35em;padding:0;border:0;background:transparent;
+  color:var(--sora-gold-light);font:400 clamp(12px,2.1cqw,16px)/1 Arial,sans-serif;cursor:pointer;
+}
 
 
 /* California Sora açıklaması menu-data.js'den okunur.
@@ -816,12 +869,12 @@ body{overflow-x:hidden}
 
 /* ==========================================================
    7. SAYFA — ÇİĞ ROLLER / KODDAN ÇİZİLEN MENÜ
-   13 ürün için mevcut onaylı sayfanın ritmi sıkıştırılarak korunur.
+   Ürün adedine göre mevcut onaylı sayfanın ritmi korunur.
    ========================================================== */
 .page7-coded-page{position:relative;container-type:inline-size}
 .page7-coded-menu{
-  position:absolute;z-index:48;left:23.5%;right:15.0%;top:26.2%;height:65.3%;
-  display:grid;grid-template-rows:repeat(13,minmax(0,1fr));
+  position:absolute;z-index:48;left:23.5%;right:15.0%;top:27.0%;height:64.5%;
+  display:grid;grid-template-rows:repeat(12,minmax(0,1fr));
   font-family:"Iowan Old Style","Palatino Linotype","Book Antiqua",Palatino,Georgia,serif;
 }
 .page7-coded-item{
@@ -874,3 +927,234 @@ body{overflow-x:hidden}
 .page7-coded-panel-allergens{position:relative;z-index:1;margin-top:.55em;padding-top:.48em;border-top:1px solid rgba(169,131,63,.28);color:rgba(239,229,207,.92);font-size:clamp(7px,1.42cqw,10.8px);line-height:1.25}
 .page7-coded-panel-allergens strong{color:var(--sora-gold-light)}
 .page7-coded-close{position:absolute;z-index:2;right:.35em;top:.18em;padding:0;border:0;background:transparent;color:var(--sora-gold-light);font:400 clamp(12px,2.1cqw,16px)/1 Arial,sans-serif;cursor:pointer}
+
+
+/* ==========================================================
+   PİŞMİŞ ROLLER — 7 + 6 ÜRÜN OLARAK İKİ KODLANMIŞ SAYFA
+   Aynı onaylı çerçeve/dekor korunur; ürünler veri dosyasından çizilir.
+   ========================================================== */
+.page6-coded-page{position:relative;container-type:inline-size}
+.page6-coded-page .page-art{object-fit:cover}
+.page6-coded-menu{
+  left:31.0%;
+  right:17.8%;
+  width:auto;
+  z-index:48;
+}
+.page6-coded-page .page7-coded-item{
+  grid-template-columns:1.05em minmax(0,1fr) minmax(.6em,.42fr) max-content 1.55em;
+  column-gap:.42em;
+}
+.page6-coded-page .page7-coded-name,
+.page6-coded-page .page7-coded-price{
+  font-size:clamp(9px,1.80cqw,15.2px);
+}
+.page6-coded-page .page7-coded-desc{
+  font-size:clamp(7.3px,1.24cqw,11px);
+  white-space:normal;
+  line-height:1.14;
+  max-width:100%;
+}
+.page6-coded-page .page7-coded-panel{left:30.5%;right:17.8%}
+
+/* Çiğ roll sayfası ürün adedi değiştiğinde grid JS tarafından güncellenir. */
+.page7-coded-menu{grid-template-rows:none}
+
+/* ==========================================================
+   PİŞMİŞ ROLLER — TASARIM ÇİZGİSİ KORUNAN 2 SAYFALIK YERLEŞİM
+   Onaylı eski sayfadaki tipografi, doğal satır ritmi ve
+   adın hemen ardından başlayan noktalı fiyat çizgisi korunur.
+   ========================================================== */
+.page6-coded-menu{
+  top:33% !important;
+  height:auto !important;
+  display:flex !important;
+  flex-direction:column;
+  gap:1.42cqw;
+}
+
+.page6-coded-page .page7-coded-item{
+  flex:0 0 auto;
+  display:grid;
+  grid-template-columns:1.05em max-content minmax(.7em,1fr) max-content 1.55em;
+  grid-template-rows:auto auto;
+  align-items:center;
+  align-content:start;
+  column-gap:.42em;
+  row-gap:.24em;
+  min-height:0;
+}
+
+/* İsim/ikon ilk satırda; açıklama ikinci satırda bağımsız akar. */
+.page6-coded-page .page7-coded-copy{display:contents}
+.page6-coded-page .page7-coded-topline{
+  grid-column:2;
+  grid-row:1;
+  align-self:center;
+  min-width:0;
+}
+.page6-coded-page .page7-coded-desc{
+  grid-column:2 / 5;
+  grid-row:2;
+  margin-top:0;
+  max-width:30.5cqw;
+  color:rgba(239,229,207,.83);
+  font-size:clamp(9px,1.72cqw,13.1px);
+  font-weight:400;
+  line-height:1.18;
+  white-space:normal;
+  overflow:visible;
+  text-shadow:0 1px 1px rgba(0,0,0,.28);
+}
+.page6-coded-page .page7-coded-flower{
+  grid-column:1;
+  grid-row:1;
+  width:.96em;
+  height:.96em;
+}
+.page6-coded-page .page7-coded-leader{
+  grid-column:3;
+  grid-row:1;
+  min-width:.7em;
+  border-bottom:1px dotted rgba(169,131,63,.82);
+}
+.page6-coded-page .page7-coded-price{
+  grid-column:4;
+  grid-row:1;
+  color:var(--sora-gold-light);
+}
+.page6-coded-page .page7-coded-toggle{
+  grid-column:5;
+  grid-row:1;
+}
+.page6-coded-page .page7-coded-name,
+.page6-coded-page .page7-coded-price{
+  font-size:clamp(11px,2.55cqw,19.4px);
+  font-weight:400;
+  letter-spacing:-.005em;
+}
+.page6-coded-page .page7-coded-name{
+  color:rgba(239,229,207,.91);
+}
+.page6-coded-page .page7-coded-icons{gap:.12em}
+.page6-coded-page .page7-coded-icon{width:.80em;height:.80em}
+
+/* Alt dekoru kapatmadan eski menüdeki ferahlığı koru. */
+.page6-coded-page .page7-coded-panel{left:30.5%;right:17.8%}
+
+/* Son görsel eşleştirme: onaylı eski Pişmiş Rolls listesinin ekseni. */
+.page6-coded-menu{
+  left:28.8% !important;
+  right:17.8% !important;
+  gap:2.0cqw;
+}
+.page6-coded-page .page7-coded-desc{justify-self:start}
+
+/* ==========================================================
+   ÇİĞ ROLLER — PİŞMİŞ ROLLER İLE AYNI OKUNAKLI PUNTO ÖLÇEĞİ
+   Yalnızca metin puntoları büyütülür; mevcut yerleşim korunur.
+   ========================================================== */
+.page7-coded-page .page7-coded-name,
+.page7-coded-page .page7-coded-price{
+  font-size:clamp(11px,2.55cqw,19.4px);
+}
+.page7-coded-page .page7-coded-desc{
+  font-size:clamp(9px,1.72cqw,13.1px);
+}
+.page7-coded-page .page7-coded-icons{gap:.14em}
+.page7-coded-page .page7-coded-icon{
+  width:1.02em;
+  height:1.02em;
+}
+
+/* ==========================================================
+   ÇİĞ ROLLER — BAŞLIK/İLK ÜRÜN ARALIĞI VE KESİNTİSİZ FİYAT ÇİZGİLERİ
+   Başlıkla ilk ürün arasına çok az daha hava verilir.
+   Noktalı çizgi, açıklama genişliğinden etkilenmeden isim/ikondan fiyata uzanır.
+   ========================================================== */
+.page7-coded-page .page7-coded-copy{display:contents}
+.page7-coded-page .page7-coded-topline{
+  grid-column:2;
+  grid-row:1;
+  align-self:center;
+  min-width:0;
+}
+.page7-coded-page .page7-coded-desc{
+  grid-column:2 / 5;
+  grid-row:2;
+  margin-top:0;
+  justify-self:start;
+}
+.page7-coded-page .page7-coded-flower{grid-column:1;grid-row:1}
+.page7-coded-page .page7-coded-leader{
+  grid-column:3;
+  grid-row:1;
+  min-width:.7em;
+  border-bottom:1px dotted rgba(169,131,63,.78);
+}
+.page7-coded-page .page7-coded-price{grid-column:4;grid-row:1}
+.page7-coded-page .page7-coded-toggle{grid-column:5;grid-row:1}
+
+
+/* ==========================================================
+   5. SAYFA — VEJETARYEN ROLLS AÇIKLAMALARI
+   Açıklamalar büyütülür ve satır içi boşluklar sıkılaştırılır.
+   Maki bölümüne dokunulmaz.
+   ========================================================== */
+.page5-veg-item.has-description{
+  grid-template-rows:auto auto;
+  align-content:start;
+  row-gap:.14em;
+}
+.page5-veg-item.has-description .page5-coded-copy{display:contents}
+.page5-veg-item.has-description .page5-coded-topline{
+  grid-column:2;
+  grid-row:1;
+  align-self:center;
+}
+.page5-veg-item.has-description .page5-coded-desc{
+  grid-column:2 / 5;
+  grid-row:2;
+  margin-top:0;
+  color:rgba(239,229,207,.94);
+  font-size:clamp(8.8px,1.62cqw,12.5px);
+  line-height:1.20;
+  max-width:100%;
+}
+.page5-veg-item.has-description .page5-coded-flower{grid-column:1;grid-row:1}
+.page5-veg-item.has-description .page5-coded-leader{grid-column:3;grid-row:1}
+.page5-veg-item.has-description .page5-coded-price{grid-column:4;grid-row:1}
+.page5-veg-item.has-description .page5-coded-toggle{grid-column:5;grid-row:1}
+
+.page5-veg-item-last{transform:translateY(-3.4cqw);}
+
+/* ==========================================================
+   3. BÖLÜM — İKİ SAYFALIK BAŞLANGIÇ / SALATA + ÇORBA DÜZENİ
+   Mevcut tasarım çizgisi korunur; yalnızca ürün adetlerine göre
+   dikey dağılım sayfa bazında dengelenir.
+   ========================================================== */
+.page3-start-menu{
+  top:22.9%;
+  height:62.0%;
+  grid-template-rows:1.15fr repeat(14,1fr);
+}
+.page3-salad-soup-menu{
+  top:25.2%;
+  height:50.5%;
+  grid-template-rows:1.18fr repeat(3,1fr) 1.35fr repeat(2,1fr);
+}
+.page3-start-menu .section-heading,
+.page3-salad-soup-menu .section-heading{
+  font-size:clamp(11px,2.18cqw,16.6px);
+}
+.page3-start-menu .item-name,
+.page3-start-menu .item-price,
+.page3-salad-soup-menu .item-name,
+.page3-salad-soup-menu .item-price{
+  font-size:clamp(8.6px,1.96cqw,14.9px);
+}
+.page3-start-menu .item-icon,
+.page3-salad-soup-menu .item-icon{
+  width:.88em;
+  height:.88em;
+}
