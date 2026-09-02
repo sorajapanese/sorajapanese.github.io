@@ -52,9 +52,8 @@ const menuPages = {
     { type: "heading", title: "NIGIRI (1 ADET)" },
     { name: "Avokado Nigiri", price: "100 TL", icons: ["vegetarian"], nutrition: { kcal: 55, protein: 1, carbs: 10, fat: 2, allergens: ["—"] } },
     { name: "Sake Nigiri", price: "150 TL", icons: ["raw"], nutrition: { kcal: 65, protein: 4, carbs: 8, fat: 2, allergens: ["Balık"] } },
-    { name: "Kani Nigiri", price: "125 TL", icons: ["seafood"], nutrition: { kcal: 60, protein: 3, carbs: 9, fat: 1, allergens: ["Balık", "Gluten"] } },
     { name: "Suzuki Nigiri", price: "185 TL", icons: ["raw"], nutrition: { kcal: 55, protein: 4, carbs: 8, fat: 1, allergens: ["Balık"] } },
-    { name: "Unagi Nigiri", price: "210 TL", icons: [], nutrition: { kcal: 85, protein: 5, carbs: 10, fat: 3, allergens: ["Balık", "Soya", "Gluten"] } },
+    { name: "Unagi Nigiri", price: "210 TL", icons: ["raw"], nutrition: { kcal: 85, protein: 5, carbs: 10, fat: 3, allergens: ["Balık", "Soya", "Gluten"] } },
     { name: "Toro Nigiri", price: "250 TL", icons: ["raw"], nutrition: { kcal: 75, protein: 4, carbs: 8, fat: 3, allergens: ["Balık"] } },
     { name: "Maguro Nigiri", price: "250 TL", icons: ["raw"], nutrition: { kcal: 60, protein: 5, carbs: 8, fat: 1, allergens: ["Balık"] } },
 
@@ -82,7 +81,6 @@ const menuPages = {
   // 6. SAYFA — SPECIAL ROLLS / PİŞMİŞ ROLLER
   // Besin değerleri porsiyon bazında yaklaşık değerlerdir.
   page6: [
-    { name: "Lemon Sea", price: "650 TL", description: "Levrek, peynir, limon, avokado, haşhaş tohumu", nutrition: { kcal: 450, protein: 17, carbs: 57, fat: 17, allergens: ["Balık", "Süt ve süt ürünleri"] } },
     { name: "Red Samurai", price: "680 TL", description: "Somon, acı surimi, avokado, salatalık, teriyaki", icons: ["spicy"], nutrition: { kcal: 470, protein: 20, carbs: 58, fat: 16, allergens: ["Balık", "Soya", "Gluten", "Yumurta"] } },
     { name: "Sora Flame Salmon", price: "670 TL", description: "Somon, avokado, teriyaki, panko, acı mayonez, çıtır patates", icons: ["spicy"], nutrition: { kcal: 570, protein: 20, carbs: 67, fat: 25, allergens: ["Balık", "Gluten", "Soya", "Yumurta"] } },
     { name: "Golden Ebi", price: "670 TL", description: "Tempura karides, hardal sos, avokado, salatalık, peynir, kızarmış havuç", icons: ["seafood"], nutrition: { kcal: 590, protein: 18, carbs: 69, fat: 26, allergens: ["Kabuklu deniz ürünü", "Gluten", "Yumurta", "Hardal", "Süt ve süt ürünleri"] } },
@@ -94,7 +92,6 @@ const menuPages = {
     { name: "Tuna Crunch", price: "830 TL", description: "Tuna balığı, tempura karides, avokado, salatalık", icons: ["seafood"], nutrition: { kcal: 600, protein: 26, carbs: 68, fat: 24, allergens: ["Balık", "Kabuklu deniz ürünü", "Gluten", "Yumurta"] } },
     { name: "Sora Crunch", price: "735 TL", description: "Somon, tempura karides, siyah pirinç, avokado, peynir, salatalık", icons: ["seafood"], nutrition: { kcal: 650, protein: 26, carbs: 76, fat: 27, allergens: ["Balık", "Kabuklu deniz ürünü", "Gluten", "Süt ve süt ürünleri", "Yumurta"] } },
     { name: "Black Dragon", price: "710 TL", description: "Levrek, tempura somon, avokado, salatalık, peynir, acı mayonez, chili biber", icons: ["spicy"], nutrition: { kcal: 640, protein: 25, carbs: 69, fat: 29, allergens: ["Balık", "Süt ve süt ürünleri", "Gluten", "Yumurta"] } },
-    { name: "Tuna Fire", price: "740 TL", description: "Tuna ezmesi, trüf, acı mayonez, togarashi, avokado, tempura karides, peynir", icons: ["spicy", "seafood"], nutrition: { kcal: 680, protein: 28, carbs: 67, fat: 32, allergens: ["Balık", "Kabuklu deniz ürünü", "Yumurta", "Gluten", "Süt ve süt ürünleri"] } },
   ],
 
   // 7. SAYFA — SPECIAL ROLLS / ÇİĞ ROLLER
@@ -108,7 +105,8 @@ const menuPages = {
     { name: "California Sora", price: "680 TL", description: "Tobiko, avokado, salatalık, peynir, surimi, japon mayonezi", icons: ["raw"], nutrition: { kcal: 570, protein: 21, carbs: 58, fat: 27, allergens: ["Balık", "Süt ve süt ürünleri", "Yumurta"] } },
     { name: "Tuna Tartar", price: "710 TL", description: "Tuna balığı, toro ezmesi, togarashi, susam yağı, avokado, teriyaki, acı mayonez", icons: ["raw", "spicy"], nutrition: { kcal: 590, protein: 26, carbs: 54, fat: 28, allergens: ["Balık", "Susam", "Soya", "Gluten", "Yumurta"] } },
     { name: "Maguro Roll", price: "775 TL", description: "Maguro, toro, avokado, salatalık, peynir, acı sos", icons: ["raw", "spicy"], nutrition: { kcal: 540, protein: 27, carbs: 50, fat: 23, allergens: ["Balık", "Süt ve süt ürünleri"] } },
-    { name: "Ocean Mix", price: "830 TL", description: "Salatalık, avokado, peynir, somon, levrek, maguro", icons: ["raw"], nutrition: { kcal: 530, protein: 30, carbs: 50, fat: 20, allergens: ["Balık", "Süt ve süt ürünleri"] } }
+    { name: "Ocean Mix", price: "830 TL", description: "Salatalık, avokado, peynir, somon, levrek, maguro", icons: ["raw"], nutrition: { kcal: 530, protein: 30, carbs: 50, fat: 20, allergens: ["Balık", "Süt ve süt ürünleri"] } },
+    { name: "Lemon Sea", price: "650 TL", description: "Levrek, peynir, limon, avokado, haşhaş tohumu", icons: ["raw"], nutrition: { kcal: 450, protein: 17, carbs: 57, fat: 17, allergens: ["Balık", "Süt ve süt ürünleri"] } }
   ]
 ,
 

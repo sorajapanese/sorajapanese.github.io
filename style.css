@@ -173,7 +173,7 @@ body{overflow-x:hidden}
   right:23.5%;
   top:38.2%;
   height:50.4%;
-  grid-template-rows:repeat(14, 1fr);
+  grid-template-rows:repeat(13, 1fr);
   z-index:10;
 }
 
@@ -930,7 +930,7 @@ body{overflow-x:hidden}
 
 
 /* ==========================================================
-   PİŞMİŞ ROLLER — 7 + 6 ÜRÜN OLARAK İKİ KODLANMIŞ SAYFA
+   PİŞMİŞ ROLLER — 6 + 5 ÜRÜN OLARAK İKİ KODLANMIŞ SAYFA
    Aynı onaylı çerçeve/dekor korunur; ürünler veri dosyasından çizilir.
    ========================================================== */
 .page6-coded-page{position:relative;container-type:inline-size}
@@ -957,7 +957,7 @@ body{overflow-x:hidden}
 }
 .page6-coded-page .page7-coded-panel{left:30.5%;right:17.8%}
 
-/* Çiğ roll sayfası ürün adedi değiştiğinde grid JS tarafından güncellenir. */
+/* Roll sayfalarında ürün adedi değiştiğinde grid JS tarafından güncellenir. */
 .page7-coded-menu{grid-template-rows:none}
 
 /* ==========================================================
@@ -1051,9 +1051,22 @@ body{overflow-x:hidden}
 .page6-coded-page .page7-coded-desc{justify-self:start}
 
 /* ==========================================================
-   ÇİĞ ROLLER — PİŞMİŞ ROLLER İLE AYNI OKUNAKLI PUNTO ÖLÇEĞİ
-   Yalnızca metin puntoları büyütülür; mevcut yerleşim korunur.
+   ÇİĞ ROLLER — 5 + 5 ÜRÜN OLARAK İKİ KODLANMIŞ SAYFA
+   Koi dekoru korunur; iki sayfada aynı okunaklı satır ritmi kullanılır.
    ========================================================== */
+.page7-coded-page .page7-coded-menu{
+  top:30% !important;
+  height:auto !important;
+  display:flex !important;
+  flex-direction:column;
+  gap:4cqw;
+}
+.page7-coded-page .page7-coded-item{
+  flex:0 0 auto;
+  align-content:start;
+  min-height:0;
+  row-gap:.24em;
+}
 .page7-coded-page .page7-coded-name,
 .page7-coded-page .page7-coded-price{
   font-size:clamp(11px,2.55cqw,19.4px);

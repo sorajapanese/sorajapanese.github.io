@@ -656,16 +656,20 @@
     if (!Array.isArray(items)) return;
     const pages = document.querySelectorAll('.page6-coded-page');
     if (pages.length < 2) return;
-    const first = items.slice(0, 7);
-    const second = items.slice(7);
+    const first = items.slice(0, 6);
+    const second = items.slice(6);
     renderRollCoded(pages[0], document.getElementById('page6-coded-menu-1'), first, 33.0, 53.5);
     renderRollCoded(pages[1], document.getElementById('page6-coded-menu-2'), second, 33.0, 53.5);
   }
 
   function renderPage7Coded(items) {
-    const page = document.querySelector('.page7-coded-page');
-    const container = document.getElementById('page7-coded-menu');
-    renderRollCoded(page, container, items, 26.2, 65.3);
+    if (!Array.isArray(items)) return;
+    const pages = document.querySelectorAll('.page7-coded-page');
+    if (pages.length < 2) return;
+    const first = items.slice(0, 5);
+    const second = items.slice(5);
+    renderRollCoded(pages[0], document.getElementById('page7-coded-menu-1'), first, 30.0, 53.5);
+    renderRollCoded(pages[1], document.getElementById('page7-coded-menu-2'), second, 30.0, 53.5);
   }
 
   function syncPage7CaliforniaDescription() {
