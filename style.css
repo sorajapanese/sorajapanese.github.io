@@ -9,6 +9,7 @@
 
 *{box-sizing:border-box}
 html,body{margin:0;padding:0;background:var(--sora-dark)}
+html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
 body{overflow-x:hidden}
 .menu-stack{width:100%}
 
@@ -1170,4 +1171,204 @@ body{overflow-x:hidden}
 .page3-salad-soup-menu .item-icon{
   width:.88em;
   height:.88em;
+}
+
+/* ==========================================================
+   MOBİL SAĞLAMLIK KATMANI
+   Masaüstü tasarımını korur; dar ekranlarda metinlerin ve
+   tıklama alanlarının birbirine girmesini engeller.
+   ========================================================== */
+.page8-nutrition-button,
+.page9-nutrition-button,
+.page10-nutrition-button{min-height:0}
+
+.nutrition-panel,
+.page5-coded-panel,
+.page7-coded-panel,
+.page8-nutrition-panel,
+.page9-nutrition-panel,
+.page10-nutrition-panel{overflow-wrap:break-word}
+
+@media (max-width:540px){
+  .menu-items,
+  .page5-coded-menu,
+  .page7-coded-menu,
+  .nutrition-panel,
+  .page5-coded-panel,
+  .page7-coded-panel,
+  .page8-nutrition-panel,
+  .page9-nutrition-panel,
+  .page10-nutrition-panel{
+    font-family:"Palatino Linotype","Book Antiqua",Palatino,Georgia,serif;
+  }
+
+  /* Başlangıçlar, salatalar ve çorbalar */
+  .page3-start-menu,
+  .page3-salad-soup-menu{left:34.5%;right:8.2%}
+
+  .page3-start-menu .menu-item,
+  .page3-salad-soup-menu .menu-item{
+    grid-template-columns:.92em minmax(0,1fr) minmax(.35em,.55fr) max-content;
+    column-gap:.30em;
+  }
+
+  .page3-start-menu .section-heading,
+  .page3-salad-soup-menu .section-heading{
+    font-size:10px;
+    font-size:clamp(10px,2.8vw,14.5px);
+  }
+
+  .page3-start-menu .item-name,
+  .page3-start-menu .item-price,
+  .page3-salad-soup-menu .item-name,
+  .page3-salad-soup-menu .item-price{
+    font-size:8.2px;
+    font-size:clamp(8.2px,2.55vw,12.5px);
+  }
+
+  .page3-start-menu .nutrition-toggle,
+  .page3-salad-soup-menu .nutrition-toggle{left:calc(100% + .45em)}
+
+  /* Nigiri ve Sashimi */
+  .page4-menu-items{left:23%;right:16.5%}
+  .page4-menu-items .menu-item{
+    grid-template-columns:.92em minmax(0,1fr) minmax(.4em,.55fr) max-content 1.45em;
+    column-gap:.30em;
+  }
+  .page4-menu-items .section-heading{
+    font-size:10px;
+    font-size:clamp(10px,2.85vw,14.5px);
+  }
+  .page4-menu-items .item-name,
+  .page4-menu-items .item-price{
+    font-size:8.2px;
+    font-size:clamp(8.2px,2.55vw,12.5px);
+  }
+
+  /* Maki ve Vejetaryen Rolls: içerik yüksekliğine göre doğal akış */
+  .page5-coded-menu{
+    left:22%;right:14%;top:21.2%;height:auto;
+    display:flex;flex-direction:column;gap:1.35vw;
+  }
+  .page5-coded-heading{
+    flex:0 0 auto;
+    font-size:10px;
+    font-size:clamp(10px,2.85vw,14.5px);
+  }
+  .page5-veg-heading{margin-top:2.5vw}
+  .page5-coded-item,
+  .page5-coded-item.has-description{
+    flex:0 0 auto;
+    grid-template-columns:.92em minmax(0,1fr) minmax(.4em,.65fr) max-content 1.45em;
+    column-gap:.30em;
+    align-content:start;
+  }
+  .page5-coded-name,
+  .page5-coded-price{
+    font-size:8.5px;
+    font-size:clamp(8.5px,2.65vw,13px);
+  }
+  .page5-coded-topline{max-width:100%;flex-wrap:wrap;row-gap:.1em}
+  .page5-veg-item.has-description .page5-coded-desc{
+    width:100%;max-width:none;
+    font-size:8.2px;
+    font-size:clamp(8.2px,2.3vw,10.8px);
+    line-height:1.18;
+    white-space:normal;
+    overflow-wrap:break-word;
+  }
+  .page5-veg-item-last{transform:none}
+
+  /* Pişmiş ve çiğ roller */
+  .page6-coded-menu{left:26% !important;right:13% !important;gap:1.7vw}
+  .page7-coded-page .page7-coded-menu{left:23%;right:12%;gap:3.3vw}
+
+  .page6-coded-page .page7-coded-item,
+  .page7-coded-page .page7-coded-item{
+    grid-template-columns:.92em minmax(0,1fr) minmax(.4em,.65fr) max-content 1.45em;
+    column-gap:.30em;
+    row-gap:.18em;
+  }
+  .page6-coded-page .page7-coded-name,
+  .page6-coded-page .page7-coded-price,
+  .page7-coded-page .page7-coded-name,
+  .page7-coded-page .page7-coded-price{
+    font-size:9px;
+    font-size:clamp(9px,2.7vw,13px);
+  }
+  .page6-coded-page .page7-coded-topline,
+  .page7-coded-page .page7-coded-topline{
+    display:flex;flex-wrap:wrap;row-gap:.1em;max-width:100%;
+  }
+  .page6-coded-page .page7-coded-name,
+  .page7-coded-page .page7-coded-name{white-space:normal}
+  .page6-coded-page .page7-coded-desc,
+  .page7-coded-page .page7-coded-desc{
+    width:100%;max-width:none;
+    font-size:8px;
+    font-size:clamp(8px,2.15vw,10.5px);
+    line-height:1.18;
+    white-space:normal;
+    overflow-wrap:break-word;
+  }
+
+  /* Açılır besin ve alerjen kartları */
+  .nutrition-panel,
+  .page5-coded-panel,
+  .page7-coded-panel,
+  .page8-nutrition-panel,
+  .page9-nutrition-panel,
+  .page10-nutrition-panel{
+    left:18%;right:9%;max-height:40%;overflow-y:auto;
+    -webkit-overflow-scrolling:touch;
+  }
+  .page4-menu-page .nutrition-panel{left:18%;right:9%}
+
+  .nutrition-head,
+  .page5-coded-panel-head,
+  .page7-coded-panel-head,
+  .page8-nutrition-head,
+  .page9-nutrition-head,
+  .page10-nutrition-head{flex-wrap:wrap;row-gap:.25em;align-items:flex-start}
+
+  .nutrition-name,
+  .nutrition-kcal,
+  .page5-coded-panel-name,
+  .page5-coded-panel-kcal,
+  .page7-coded-panel-name,
+  .page7-coded-panel-kcal,
+  .page8-nutrition-name,
+  .page8-nutrition-kcal,
+  .page9-nutrition-name,
+  .page9-nutrition-kcal,
+  .page10-nutrition-name,
+  .page10-nutrition-kcal{
+    font-size:9px;
+    font-size:clamp(9px,2.55vw,12.5px);
+  }
+
+  .nutrition-macros,
+  .nutrition-allergens,
+  .page5-coded-panel-macros,
+  .page5-coded-panel-allergens,
+  .page7-coded-panel-macros,
+  .page7-coded-panel-allergens,
+  .page8-nutrition-macros,
+  .page8-nutrition-allergens,
+  .page9-nutrition-macros,
+  .page9-nutrition-allergens,
+  .page10-nutrition-macros,
+  .page10-nutrition-allergens{
+    font-size:7.5px;
+    font-size:clamp(7.5px,2.1vw,10px);
+  }
+}
+
+@media (max-width:350px){
+  .page3-start-menu,
+  .page3-salad-soup-menu{left:33%;right:7%}
+  .page4-menu-items{left:21.5%;right:14%}
+  .page5-coded-menu{left:20%;right:11%;gap:1.1vw}
+  .page6-coded-menu{left:24% !important;right:10% !important;gap:1.35vw}
+  .page7-coded-page .page7-coded-menu{left:21%;right:10%;gap:2.8vw}
 }

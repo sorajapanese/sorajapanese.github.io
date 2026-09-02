@@ -6,6 +6,39 @@
     seafood: { src: 'assets/icons/seafood.svg', label: 'Deniz ürünü' }
   };
 
+  function positionPanel(page, panel, anchor, options = {}) {
+    if (!page || !panel || !anchor) return;
+
+    const pageRect = page.getBoundingClientRect();
+    const anchorRect = anchor.getBoundingClientRect();
+    const pageHeight = pageRect.height;
+    const panelHeight = panel.getBoundingClientRect().height;
+    const gap = pageHeight * (options.gap ?? 0.008);
+    const minTop = pageHeight * (options.minTop ?? 0.20);
+    const maxBottom = pageHeight * (options.maxBottom ?? 0.94);
+    const anchorTop = anchorRect.top - pageRect.top;
+    const anchorBottom = anchorRect.bottom - pageRect.top;
+
+    let top = anchorBottom + gap;
+    if (top + panelHeight > maxBottom) {
+      top = anchorTop - panelHeight - gap;
+    }
+
+    const maxTop = Math.max(minTop, maxBottom - panelHeight);
+    panel.style.top = `${Math.max(minTop, Math.min(top, maxTop))}px`;
+  }
+
+  function setHotspotGeometry(button, rowTops, index) {
+    const top = rowTops[index];
+    const previousGap = index > 0 ? top - rowTops[index - 1] : Infinity;
+    const nextGap = index < rowTops.length - 1 ? rowTops[index + 1] - top : Infinity;
+    const nearestGap = Math.min(previousGap, nextGap);
+    const safeHeight = Number.isFinite(nearestGap) ? nearestGap * 0.90 : 3;
+
+    button.style.top = `${top}%`;
+    button.style.height = `${safeHeight}%`;
+  }
+
   function ensureNutritionPanel(container) {
     const page = container.closest('.menu-page');
     if (!page) return null;
@@ -70,21 +103,7 @@
 
     panel.classList.add('is-open');
 
-    // Kart sayfa düzenini kaydırmaz; tıklanan satırın yakınına üst katman olarak yerleşir.
-    const pageRect = page.getBoundingClientRect();
-    const rowRect = row.getBoundingClientRect();
-    const pageHeight = pageRect.height;
-    const rowBottom = rowRect.bottom - pageRect.top;
-    const rowTop = rowRect.top - pageRect.top;
-    const estimatedPanelHeight = pageHeight * 0.105;
-    const gap = pageHeight * 0.008;
-
-    let top = rowBottom + gap;
-    if (top + estimatedPanelHeight > pageHeight * 0.91) {
-      top = rowTop - estimatedPanelHeight - gap;
-    }
-    top = Math.max(pageHeight * 0.245, Math.min(top, pageHeight * 0.82));
-    panel.style.top = `${top}px`;
+    positionPanel(page, panel, row, { minTop: 0.245, maxBottom: 0.91 });
   }
 
   function renderMenu(containerId, items) {
@@ -300,13 +319,7 @@
         panel.querySelector('.page5-coded-panel-allergens').innerHTML = `<strong>Alerjenler:</strong> ${n.allergens.join(', ')}`;
         panel.classList.add('is-open');
 
-        const pageRect = page.getBoundingClientRect();
-        const rowRect = row.getBoundingClientRect();
-        const pageH = pageRect.height;
-        let top = rowRect.bottom - pageRect.top + pageH * .009;
-        const estimated = pageH * .095;
-        if (top + estimated > pageH * .91) top = rowRect.top - pageRect.top - estimated - pageH * .009;
-        panel.style.top = `${Math.max(pageH * .23, Math.min(top, pageH * .82))}px`;
+        positionPanel(page, panel, row, { minTop: 0.23, maxBottom: 0.91, gap: 0.009 });
       });
 
       row.append(flower, copy, leader, price, toggle);
@@ -637,13 +650,7 @@
         panel.querySelector('.page7-coded-panel-allergens').innerHTML = `<strong>Alerjenler:</strong> ${n.allergens.join(', ')}`;
         panel.classList.add('is-open');
 
-        const pageRect = page.getBoundingClientRect();
-        const rowRect = row.getBoundingClientRect();
-        const pageH = pageRect.height;
-        let top = rowRect.bottom - pageRect.top + pageH * .006;
-        const estimated = pageH * .09;
-        if (top + estimated > pageH * .92) top = rowRect.top - pageRect.top - estimated - pageH * .006;
-        panel.style.top = `${Math.max(pageH * .23, Math.min(top, pageH * .83))}px`;
+        positionPanel(page, panel, row, { minTop: 0.23, maxBottom: 0.92, gap: 0.006 });
       });
 
       row.append(flower, copy, leader, price, toggle);
@@ -719,7 +726,7 @@
       const btn = document.createElement('button');
       btn.className = 'page7-nutrition-button';
       btn.type = 'button';
-      btn.style.top = `${rowTops[i]}%`;
+      setHotspotGeometry(btn, rowTops, i);
       btn.setAttribute('aria-label', `${item.name} besin ve alerjen bilgilerini aç`);
       btn.setAttribute('aria-expanded', 'false');
 
@@ -792,7 +799,7 @@
       const btn = document.createElement('button');
       btn.className = 'page8-nutrition-button';
       btn.type = 'button';
-      btn.style.top = `${rowTops[i]}%`;
+      setHotspotGeometry(btn, rowTops, i);
       btn.setAttribute('aria-label', `${item.name} besin ve alerjen bilgilerini aç`);
       btn.setAttribute('aria-expanded', 'false');
 
@@ -819,12 +826,7 @@
         panel.querySelector('.page8-nutrition-note').textContent = n.note || '';
 
         panel.classList.add('is-open');
-        const pageH = page.getBoundingClientRect().height;
-        const estimatedH = pageH * .105;
-        let topPct = rowTops[i] + 2.4;
-        if ((topPct / 100 * pageH) + estimatedH > pageH * .92) topPct = rowTops[i] - 11.5;
-        topPct = Math.max(24, Math.min(topPct, 81.5));
-        panel.style.top = `${topPct}%`;
+        positionPanel(page, panel, btn, { minTop: 0.24, maxBottom: 0.92 });
       });
 
       layer.appendChild(btn);
@@ -868,7 +870,7 @@
       const btn = document.createElement('button');
       btn.className = 'page9-nutrition-button';
       btn.type = 'button';
-      btn.style.top = `${rowTops[i]}%`;
+      setHotspotGeometry(btn, rowTops, i);
       btn.setAttribute('aria-label', `${item.name} besin ve alerjen bilgilerini aç`);
       btn.setAttribute('aria-expanded', 'false');
 
@@ -895,12 +897,7 @@
         panel.querySelector('.page9-nutrition-note').textContent = n.note || '';
 
         panel.classList.add('is-open');
-        const pageH = page.getBoundingClientRect().height;
-        const estimatedH = pageH * .10;
-        let topPct = rowTops[i] + 2.15;
-        if ((topPct / 100 * pageH) + estimatedH > pageH * .93) topPct = rowTops[i] - 10.4;
-        topPct = Math.max(22, Math.min(topPct, 82));
-        panel.style.top = `${topPct}%`;
+        positionPanel(page, panel, btn, { minTop: 0.22, maxBottom: 0.93 });
       });
 
       layer.appendChild(btn);
@@ -948,7 +945,7 @@
       const btn = document.createElement('button');
       btn.className = 'page10-nutrition-button';
       btn.type = 'button';
-      btn.style.top = `${rowTops[i]}%`;
+      setHotspotGeometry(btn, rowTops, i);
       btn.setAttribute('aria-label', `${item.name} besin ve alerjen bilgilerini aç`);
       btn.setAttribute('aria-expanded', 'false');
 
@@ -975,12 +972,7 @@
         panel.querySelector('.page10-nutrition-note').textContent = n.note || '';
 
         panel.classList.add('is-open');
-        const pageH = page.getBoundingClientRect().height;
-        const estimatedH = pageH * .10;
-        let topPct = rowTops[i] + 2.15;
-        if ((topPct / 100 * pageH) + estimatedH > pageH * .93) topPct = rowTops[i] - 10.4;
-        topPct = Math.max(22, Math.min(topPct, 82));
-        panel.style.top = `${topPct}%`;
+        positionPanel(page, panel, btn, { minTop: 0.22, maxBottom: 0.93 });
       });
 
       layer.appendChild(btn);
