@@ -767,6 +767,10 @@
     const layer = document.getElementById('page8-nutrition-hotspots');
     if (!page || !layer || typeof menuPages === 'undefined' || !Array.isArray(menuPages.page8)) return;
 
+    const wagyu = menuPages.page8.find(item => item && item.name === 'Wagyu');
+    const wagyuPrice = document.getElementById('page8-wagyu-price');
+    if (wagyu && wagyuPrice) wagyuPrice.textContent = wagyu.price;
+
     const products = menuPages.page8.filter(item => item.nutrition);
     // Onaylı görselde çizilmiş + işaretlerinin dikey merkezleri.
     const rowTops = [32.597, 37.155, 41.920, 46.685, 51.588, 56.354, 69.475, 75.173, 83.943, 92.645];

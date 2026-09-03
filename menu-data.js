@@ -123,7 +123,7 @@ const menuPages = {
     { name: "Antrikot", price: "400 g — 1.600 TL", icons: [], nutrition: { kcal: 1160, protein: 104, carbs: 0, fat: 84, allergens: ["Belirgin alerjen yok"], note: "400 g et için yaklaşık değerdir; sos/tereyağı kullanımı dahil değildir." } },
     { name: "Bonfile", price: "1 adet 475 TL / 4 adet 1.900 TL", icons: [], nutrition: { kcal: 190, protein: 26, carbs: 0, fat: 9, allergens: ["Belirgin alerjen yok"], note: "1 adet için yaklaşık değerdir. 4 adet porsiyon yaklaşık 760 kcal'dir." } },
     { name: "Pirzola", price: "1 adet 400 TL / 4 adet 1.600 TL", icons: [], nutrition: { kcal: 290, protein: 24, carbs: 0, fat: 22, allergens: ["Belirgin alerjen yok"], note: "1 adet için yaklaşık değerdir. 4 adet porsiyon yaklaşık 1.160 kcal'dir." } },
-    { name: "Wagyu", price: "15.000 TL", icons: [], nutrition: { kcal: null, protein: null, carbs: null, fat: null, allergens: ["Belirgin alerjen yok"], note: "Gramaj belirtilmediği için besin değeri hesaplanmamıştır." } }
+    { name: "Wagyu", price: "12.000 TL", icons: [], nutrition: { kcal: null, protein: null, carbs: null, fat: null, allergens: ["Belirgin alerjen yok"], note: "Gramaj belirtilmediği için besin değeri hesaplanmamıştır." } }
   ],
 
   // 9. SAYFA — NOODLE & RICE / UDON / RAMEN
