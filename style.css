@@ -303,6 +303,15 @@ body{overflow-x:hidden}
   line-height:1.25;
 }
 .nutrition-allergens strong{color:var(--sora-gold-light)}
+.nutrition-note{
+  position:relative;
+  z-index:1;
+  margin-top:.55em;
+  color:rgba(239,229,207,.72);
+  font-size:clamp(6.5px,1.30cqw,10px);
+  line-height:1.25;
+  font-style:italic;
+}
 .nutrition-close{
   position:absolute;
   z-index:2;
@@ -856,6 +865,78 @@ body{overflow-x:hidden}
   color:var(--sora-gold-light);font:400 clamp(12px,2.1cqw,16px)/1 Arial,sans-serif;cursor:pointer;
 }
 
+/* ==========================================================
+   TATLILAR & İÇECEKLER — İKİ SAYFALIK KODLANMIŞ DÜZEN
+   Metinler ve fiyatlar menu-data.js üzerinden gelir.
+   ========================================================== */
+.page10-coded-page{position:relative;container-type:inline-size;aspect-ratio:2 / 3}
+.page10-coded-page .page-art{object-fit:cover}
+.page10-content-cover{
+  position:absolute;
+  z-index:5;
+  left:22.5%;
+  right:14.5%;
+  top:20.1%;
+  height:68.0%;
+  background:
+    radial-gradient(circle at 18% 23%,rgba(32,61,31,.15) 0 1px,transparent 1.45px) 0 0/12px 12px,
+    radial-gradient(circle at 73% 66%,rgba(0,0,0,.17) 0 1px,transparent 1.6px) 0 0/15px 15px,
+    linear-gradient(rgba(4,23,4,.985),rgba(4,23,4,.985));
+  box-shadow:0 0 2.6cqw 2.35cqw rgba(4,23,4,.975);
+  pointer-events:none;
+}
+.page10-coded-menu{
+  z-index:10;
+  left:26.5%;
+  right:18.5%;
+  font-family:"Iowan Old Style","Palatino Linotype","Book Antiqua",Palatino,Georgia,serif;
+}
+.page10-desserts-menu{
+  top:21.6%;
+  height:57.8%;
+  grid-template-rows:1.45fr repeat(10,minmax(0,1fr));
+}
+.page10-drinks-menu{
+  top:21.6%;
+  height:59.7%;
+  grid-template-rows:1.45fr repeat(8,minmax(0,1fr)) 1.70fr repeat(4,minmax(0,1fr));
+}
+.page10-coded-menu .menu-heading{align-items:center}
+.page10-coded-menu .heading-flower{width:1.42em;height:1.42em}
+.page10-coded-menu .section-heading{
+  color:var(--sora-gold-light);
+  font-size:clamp(11px,2.92cqw,22.2px);
+  letter-spacing:.065em;
+}
+.page10-coded-menu .menu-item{
+  grid-template-columns:1.05em minmax(0,max-content) minmax(.8em,1fr) max-content 1.55em;
+  column-gap:.46em;
+}
+.page10-coded-menu .menu-flower{width:.90em;height:.90em}
+.page10-coded-menu .item-name,
+.page10-coded-menu .item-price{
+  font-size:clamp(8.4px,1.96cqw,14.9px);
+}
+.page10-coded-menu .nutrition-toggle{
+  width:1.55em;
+  height:1.55em;
+  padding:0;
+  border:1px solid rgba(194,161,90,.92);
+  border-radius:50%;
+  display:grid;
+  place-items:center;
+  background:rgba(6,27,19,.90);
+  color:var(--sora-gold-light);
+  font:700 clamp(8px,1.55cqw,12px)/1 Arial,sans-serif;
+  cursor:pointer;
+  box-shadow:0 1px 4px rgba(0,0,0,.28);
+  touch-action:manipulation;
+  -webkit-tap-highlight-color:transparent;
+}
+.page10-coded-menu .nutrition-toggle.is-active{background:rgba(11,44,32,.98)}
+.page10-coded-menu .nutrition-toggle:focus-visible{outline:2px solid rgba(223,191,114,.9);outline-offset:2px}
+.page10-coded-page .nutrition-panel{left:25.0%;right:16.5%}
+
 
 /* California Sora açıklaması menu-data.js'den okunur.
    Alttaki kilitli görseldeki eski açıklama, mevcut temiz arka plan görselinin
@@ -1331,6 +1412,24 @@ body{overflow-x:hidden}
     overflow-wrap:break-word;
   }
 
+  /* Kodlanmış tatlı ve içecek sayfaları */
+  .page10-content-cover{left:18.5%;right:7.5%;box-shadow:0 0 3.2cqw 2.8cqw rgba(4,23,4,.98)}
+  .page10-coded-menu{left:22%;right:10.5%}
+  .page10-coded-menu .menu-item{
+    grid-template-columns:.92em minmax(0,max-content) minmax(.35em,1fr) max-content 1.45em;
+    column-gap:.30em;
+  }
+  .page10-coded-menu .section-heading{
+    font-size:11px;
+    font-size:clamp(11px,3.3vw,16px);
+  }
+  .page10-coded-menu .item-name,
+  .page10-coded-menu .item-price{
+    font-size:8.2px;
+    font-size:clamp(8.2px,2.55vw,12px);
+  }
+  .page10-coded-page .nutrition-panel{left:15%;right:7%}
+
   /* Açılır besin ve alerjen kartları */
   .nutrition-panel,
   .page5-coded-panel,
@@ -1368,6 +1467,7 @@ body{overflow-x:hidden}
 
   .nutrition-macros,
   .nutrition-allergens,
+  .nutrition-note,
   .page5-coded-panel-macros,
   .page5-coded-panel-allergens,
   .page7-coded-panel-macros,
@@ -1390,4 +1490,5 @@ body{overflow-x:hidden}
   .page5-coded-menu{left:20%;right:11%;gap:1.1vw}
   .page6-coded-menu{left:24% !important;right:10% !important;gap:1.35vw}
   .page7-coded-page .page7-coded-menu{left:21%;right:10%;gap:2.8vw}
+  .page10-coded-menu{left:20.5%;right:8%}
 }

@@ -145,13 +145,25 @@ const menuPages = {
     { name: "Dana Etli Ramen", price: "810 TL", nutrition: { kcal: 760, protein: 34, carbs: 74, fat: 29, allergens: ["Gluten", "Soya", "Yumurta", "Susam"] } }
   ],
 
-  // 10. SAYFA — TATLILAR, SOĞUK İÇECEKLER & SICAK İÇECEKLER
+  // 10. SAYFA — TATLILAR
   // Besin değerleri reçete/servis gramajları kesinleşene kadar yaklaşık değerlerdir.
-  page10: [
+  page10a: [
+    { type: "heading", title: "TATLI" },
     { name: "Kızarmış Dondurma", price: "400 TL", nutrition: { kcal: 420, protein: 7, carbs: 52, fat: 20, allergens: ["Süt ve süt ürünleri", "Gluten", "Yumurta"], note: "Porsiyon ve kaplama reçetesine göre değişebilir." } },
-    { name: "Mochi (Çilek/Vanilya)", price: "350 TL", nutrition: { kcal: 220, protein: 3, carbs: 44, fat: 4, allergens: ["Süt ve süt ürünleri"], note: "Dolgu çeşidine göre değerler değişebilir." } },
-    { name: "Japanese Cheesecake", price: "500 TL", nutrition: { kcal: 360, protein: 8, carbs: 34, fat: 22, allergens: ["Süt ve süt ürünleri", "Yumurta", "Gluten"] } },
+    { name: "Mochi Çilek", price: "350 TL", nutrition: { kcal: 220, protein: 3, carbs: 44, fat: 4, allergens: ["Süt ve süt ürünleri"], note: "Dolgu çeşidine göre değerler değişebilir." } },
+    { name: "Mochi Vanilya", price: "350 TL", nutrition: { kcal: 220, protein: 3, carbs: 44, fat: 4, allergens: ["Süt ve süt ürünleri"], note: "Dolgu çeşidine göre değerler değişebilir." } },
+    { name: "Mochi Vişne", price: "400 TL", nutrition: { kcal: 220, protein: 3, carbs: 44, fat: 4, allergens: ["Süt ve süt ürünleri"], note: "Dolgu çeşidine göre değerler değişebilir." } },
+    { name: "Mochi Yuzu", price: "400 TL", nutrition: { kcal: 220, protein: 3, carbs: 44, fat: 4, allergens: ["Süt ve süt ürünleri"], note: "Dolgu çeşidine göre değerler değişebilir." } },
+    { name: "Mochi Baileys", price: "400 TL", nutrition: { kcal: 220, protein: 3, carbs: 44, fat: 4, allergens: ["Süt ve süt ürünleri"], note: "Dolgu çeşidine göre değerler değişebilir." } },
+    { name: "Mochi Ferrero Çikolata", price: "400 TL", nutrition: { kcal: 220, protein: 3, carbs: 44, fat: 4, allergens: ["Süt ve süt ürünleri", "Fındık"], note: "Dolgu çeşidine göre değerler değişebilir." } },
+    { name: "Mochi Frenk Üzümlü", price: "400 TL", nutrition: { kcal: 220, protein: 3, carbs: 44, fat: 4, allergens: ["Süt ve süt ürünleri"], note: "Dolgu çeşidine göre değerler değişebilir." } },
+    { name: "Mochi Piña Colada", price: "400 TL", nutrition: { kcal: 220, protein: 3, carbs: 44, fat: 4, allergens: ["Süt ve süt ürünleri"], note: "Dolgu çeşidine göre değerler değişebilir." } },
+    { name: "Japanese Cheesecake", price: "500 TL", nutrition: { kcal: 360, protein: 8, carbs: 34, fat: 22, allergens: ["Süt ve süt ürünleri", "Yumurta", "Gluten"] } }
+  ],
 
+  // 11. SAYFA — SOĞUK & SICAK İÇECEKLER
+  page10b: [
+    { type: "heading", title: "SOĞUK İÇECEKLER" },
     { name: "Küçük Su", price: "60 TL", nutrition: { kcal: 0, protein: 0, carbs: 0, fat: 0, allergens: ["Belirgin alerjen yok"] } },
     { name: "Uludağ Premium 250 ml Soda", price: "120 TL", nutrition: { kcal: 0, protein: 0, carbs: 0, fat: 0, allergens: ["Belirgin alerjen yok"] } },
     { name: "Cola / Fanta / Sprite", price: "120 TL", nutrition: { kcal: 140, protein: 0, carbs: 35, fat: 0, allergens: ["Belirgin alerjen yok"], note: "Yaklaşık 330 ml standart şekerli ürün için; seçilen içeceğe göre değişir." } },
@@ -161,6 +173,7 @@ const menuPages = {
     { name: "San Pellegrino 250 ml", price: "160 TL", nutrition: { kcal: 0, protein: 0, carbs: 0, fat: 0, allergens: ["Belirgin alerjen yok"] } },
     { name: "San Pellegrino 750 ml", price: "260 TL", nutrition: { kcal: 0, protein: 0, carbs: 0, fat: 0, allergens: ["Belirgin alerjen yok"] } },
 
+    { type: "heading", title: "SICAK İÇECEKLER" },
     { name: "Türk Kahvesi", price: "160 TL", nutrition: { kcal: 7, protein: 0.3, carbs: 0.4, fat: 0.3, allergens: ["Belirgin alerjen yok"], note: "Şekersiz servis için yaklaşık değerdir." } },
     { name: "Bitki Çayı", price: "180 TL", nutrition: { kcal: 2, protein: 0, carbs: 0.4, fat: 0, allergens: ["Belirgin alerjen yok"], note: "Şekersiz servis için yaklaşık değerdir." } },
     { name: "Filtre Kahve", price: "180 TL", nutrition: { kcal: 3, protein: 0.3, carbs: 0, fat: 0, allergens: ["Belirgin alerjen yok"], note: "Sade servis için yaklaşık değerdir." } },

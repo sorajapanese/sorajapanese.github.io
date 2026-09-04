@@ -56,7 +56,8 @@
         <span class="nutrition-kcal"></span>
       </div>
       <div class="nutrition-macros"></div>
-      <div class="nutrition-allergens"></div>`;
+      <div class="nutrition-allergens"></div>
+      <div class="nutrition-note"></div>`;
     page.appendChild(panel);
 
     panel.querySelector('.nutrition-close').addEventListener('click', () => {
@@ -93,13 +94,18 @@
 
     const n = item.nutrition;
     panel.querySelector('.nutrition-name').textContent = item.name;
-    panel.querySelector('.nutrition-kcal').textContent = `≈ ${n.kcal} kcal`;
-    panel.querySelector('.nutrition-macros').innerHTML = `
-      <span>Protein <strong>${n.protein} g</strong></span>
-      <span>Karbonhidrat <strong>${n.carbs} g</strong></span>
-      <span>Yağ <strong>${n.fat} g</strong></span>`;
+    panel.querySelector('.nutrition-kcal').textContent =
+      Number.isFinite(n.kcal) ? `≈ ${n.kcal} kcal` : 'Bilgi gerekli';
+    panel.querySelector('.nutrition-macros').innerHTML =
+      Number.isFinite(n.protein) && Number.isFinite(n.carbs) && Number.isFinite(n.fat)
+        ? `<span>Protein <strong>${n.protein} g</strong></span>
+           <span>Karbonhidrat <strong>${n.carbs} g</strong></span>
+           <span>Yağ <strong>${n.fat} g</strong></span>`
+        : '';
+    const allergens = n.allergens && n.allergens.length ? n.allergens.join(', ') : 'Bilgi yok';
     panel.querySelector('.nutrition-allergens').innerHTML =
-      `<strong>Alerjenler:</strong> ${n.allergens.join(', ')}`;
+      `<strong>Alerjenler:</strong> ${allergens}`;
+    panel.querySelector('.nutrition-note').textContent = n.note || '';
 
     panel.classList.add('is-open');
 
@@ -907,82 +913,6 @@
       layer.appendChild(btn);
     });
   }
-
-
-  function initPage10Nutrition() {
-    const page = document.querySelector('.page10-approved-page');
-    const layer = document.getElementById('page10-nutrition-hotspots');
-    if (!page || !layer || typeof menuPages === 'undefined' || !Array.isArray(menuPages.page10)) return;
-
-    const products = menuPages.page10.filter(item => item.nutrition);
-    const rowTops = [
-      26.138, 29.667, 33.246,
-      43.851, 47.024, 50.231, 53.503, 56.659, 59.776, 62.986, 66.158,
-      75.799, 78.743, 81.817, 84.752
-    ];
-
-    const panel = document.createElement('section');
-    panel.className = 'page10-nutrition-panel';
-    panel.setAttribute('aria-live', 'polite');
-    panel.innerHTML = `
-      <button class="page10-nutrition-close" type="button" aria-label="Besin bilgisini kapat">×</button>
-      <div class="page10-nutrition-head">
-        <span class="page10-nutrition-name"></span>
-        <span class="page10-nutrition-kcal"></span>
-      </div>
-      <div class="page10-nutrition-macros"></div>
-      <div class="page10-nutrition-allergens"></div>
-      <div class="page10-nutrition-note"></div>`;
-    page.appendChild(panel);
-
-    const close = () => {
-      panel.classList.remove('is-open');
-      layer.querySelectorAll('.page10-nutrition-button.is-active').forEach(btn => {
-        btn.classList.remove('is-active');
-        btn.setAttribute('aria-expanded', 'false');
-      });
-    };
-
-    panel.querySelector('.page10-nutrition-close').addEventListener('click', close);
-
-    products.forEach((item, i) => {
-      const btn = document.createElement('button');
-      btn.className = 'page10-nutrition-button';
-      btn.type = 'button';
-      setHotspotGeometry(btn, rowTops, i);
-      btn.setAttribute('aria-label', `${item.name} besin ve alerjen bilgilerini aç`);
-      btn.setAttribute('aria-expanded', 'false');
-
-      btn.addEventListener('click', () => {
-        if (btn.classList.contains('is-active')) { close(); return; }
-        close();
-        btn.classList.add('is-active');
-        btn.setAttribute('aria-expanded', 'true');
-
-        const n = item.nutrition;
-        panel.querySelector('.page10-nutrition-name').textContent = item.name;
-        panel.querySelector('.page10-nutrition-kcal').textContent =
-          Number.isFinite(n.kcal) ? `≈ ${n.kcal} kcal` : 'Bilgi gerekli';
-
-        panel.querySelector('.page10-nutrition-macros').innerHTML =
-          Number.isFinite(n.protein) && Number.isFinite(n.carbs) && Number.isFinite(n.fat)
-            ? `<span>Protein <strong>${n.protein} g</strong></span>
-               <span>Karbonhidrat <strong>${n.carbs} g</strong></span>
-               <span>Yağ <strong>${n.fat} g</strong></span>`
-            : '';
-
-        const allergens = n.allergens && n.allergens.length ? n.allergens.join(', ') : 'Bilgi yok';
-        panel.querySelector('.page10-nutrition-allergens').innerHTML = `<strong>Alerjenler:</strong> ${allergens}`;
-        panel.querySelector('.page10-nutrition-note').textContent = n.note || '';
-
-        panel.classList.add('is-open');
-        positionPanel(page, panel, btn, { minTop: 0.22, maxBottom: 0.93 });
-      });
-
-      layer.appendChild(btn);
-    });
-  }
-
   if (typeof menuPages !== 'undefined') {
     renderMenu('page3a-menu', menuPages.page3a);
     renderMenu('page3b-menu', menuPages.page3b);
@@ -992,6 +922,7 @@
     renderPage7Coded(menuPages.page7);
     initPage8Nutrition();
     initPage9Nutrition();
-    initPage10Nutrition();
+    renderMenu('page10-desserts-menu', menuPages.page10a);
+    renderMenu('page10-drinks-menu', menuPages.page10b);
   }
 })();
