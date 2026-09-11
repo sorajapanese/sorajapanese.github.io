@@ -85,6 +85,7 @@ const menuPages = {
     { name: "Sora Flame Salmon", price: "670 TL", description: "Somon, avokado, teriyaki, panko, acı mayonez, çıtır patates", icons: ["spicy"], nutrition: { kcal: 570, protein: 20, carbs: 67, fat: 25, allergens: ["Balık", "Gluten", "Soya", "Yumurta"] } },
     { name: "Golden Ebi", price: "670 TL", description: "Tempura karides, hardal sos, avokado, salatalık, peynir, kızarmış havuç", icons: ["seafood"], nutrition: { kcal: 590, protein: 18, carbs: 69, fat: 26, allergens: ["Kabuklu deniz ürünü", "Gluten", "Yumurta", "Hardal", "Süt ve süt ürünleri"] } },
     { name: "Tokyo Breeze", price: "690 TL", description: "Levrek, avokado, salatalık, teriyaki", nutrition: { kcal: 390, protein: 18, carbs: 50, fat: 12, allergens: ["Balık", "Soya", "Gluten"] } },
+    { name: "Black Tokyo", price: "690 TL", description: "Avokado, somon, teriyaki sos, salatalık, siyah tobiko, acı peynir", icons: ["spicy"], nutrition: { kcal: 540, protein: 21, carbs: 56, fat: 25, allergens: ["Balık", "Süt ve süt ürünleri", "Soya", "Gluten"] } },
     { name: "Ebi Crunch", price: "680 TL", description: "Tempura karides, çıtır panko, avokado, salatalık, peynir, patates", icons: ["seafood"], nutrition: { kcal: 620, protein: 18, carbs: 75, fat: 28, allergens: ["Kabuklu deniz ürünü", "Gluten", "Yumurta", "Süt ve süt ürünleri"] } },
     { name: "Unagi Sora", price: "710 TL", description: "Yılan balığı, avokado, salatalık, teriyaki, susam", nutrition: { kcal: 510, protein: 18, carbs: 69, fat: 18, allergens: ["Balık", "Soya", "Susam", "Gluten"] } },
     { name: "Dragon Wave", price: "750 TL", description: "Yılan balığı, levrek, avokado, salatalık, peynir, susam, teriyaki", nutrition: { kcal: 610, protein: 24, carbs: 70, fat: 24, allergens: ["Balık", "Soya", "Gluten", "Susam", "Süt ve süt ürünleri"] } },
@@ -100,7 +101,6 @@ const menuPages = {
     { name: "Sora Salmon", price: "660 TL", description: "Somon, peynir, avokado, ponzu", icons: ["raw"], nutrition: { kcal: 480, protein: 20, carbs: 48, fat: 22, allergens: ["Balık", "Süt ve süt ürünleri", "Soya", "Gluten"] } },
     { name: "Philadelphia Sora", price: "680 TL", description: "Avokado, salatalık, peynir, somon, ponzu sos, japon mayonezi", icons: ["raw"], nutrition: { kcal: 560, protein: 20, carbs: 55, fat: 28, allergens: ["Balık", "Süt ve süt ürünleri", "Soya", "Gluten", "Yumurta"] } },
     { name: "Green Dragon", price: "690 TL", description: "Levrek, yeşil sos, kırmızı sos, avokado, salatalık, peynir", icons: ["raw"], nutrition: { kcal: 500, protein: 18, carbs: 55, fat: 22, allergens: ["Balık", "Süt ve süt ürünleri", "Soya"] } },
-    { name: "Black Tokyo", price: "690 TL", description: "Avokado, somon, teriyaki sos, salatalık, siyah tobiko, acı peynir", icons: ["raw", "spicy"], nutrition: { kcal: 540, protein: 21, carbs: 56, fat: 25, allergens: ["Balık", "Süt ve süt ürünleri", "Soya", "Gluten"] } },
     { name: "Samurai Tartar", price: "690 TL", description: "Somon tartar, avokado, peynir, salatalık, hardal, acı sos, çıtır panko", icons: ["raw", "spicy"], nutrition: { kcal: 590, protein: 23, carbs: 60, fat: 27, allergens: ["Balık", "Süt ve süt ürünleri", "Hardal", "Gluten", "Yumurta"] } },
     { name: "California Sora", price: "680 TL", description: "Tobiko, avokado, salatalık, peynir, surimi, japon mayonezi", icons: ["raw"], nutrition: { kcal: 570, protein: 21, carbs: 58, fat: 27, allergens: ["Balık", "Süt ve süt ürünleri", "Yumurta"] } },
     { name: "Tuna Tartar", price: "710 TL", description: "Tuna balığı, toro ezmesi, togarashi, susam yağı, avokado, teriyaki, acı mayonez", icons: ["raw", "spicy"], nutrition: { kcal: 590, protein: 26, carbs: 54, fat: 28, allergens: ["Balık", "Susam", "Soya", "Gluten", "Yumurta"] } },
@@ -115,7 +115,7 @@ const menuPages = {
   page8: [
     { name: "Tatlı Ekşi Soslu Tavuk", price: "710 TL", icons: [], nutrition: { kcal: 650, protein: 32, carbs: 72, fat: 26, allergens: ["Gluten", "Soya", "Yumurta"] } },
     { name: "Amiral Tso Tavuk", price: "720 TL", icons: ["spicy"], nutrition: { kcal: 720, protein: 35, carbs: 78, fat: 30, allergens: ["Gluten", "Soya", "Yumurta"] } },
-    { name: "Shao Pao Tavuk", price: "870 TL", icons: [], nutrition: { kcal: 620, protein: 35, carbs: 55, fat: 28, allergens: ["Soya", "Gluten"], note: "Sos reçetesi netleştiğinde alerjen bilgisi tekrar teyit edilmelidir." } },
+    { name: "Shao Lao Tavuk", price: "870 TL", icons: [], nutrition: { kcal: 620, protein: 35, carbs: 55, fat: 28, allergens: ["Soya", "Gluten"], note: "Sos reçetesi netleştiğinde alerjen bilgisi tekrar teyit edilmelidir." } },
     { name: "Bulgogi Dana", price: "870 TL", icons: [], nutrition: { kcal: 610, protein: 38, carbs: 42, fat: 30, allergens: ["Soya", "Susam"] } },
     { name: "Yeşil Soğanlı Dana", price: "890 TL", icons: [], nutrition: { kcal: 580, protein: 38, carbs: 30, fat: 32, allergens: ["Soya"] } },
     { name: "Çıtır Patlıcanlı Dana", price: "910 TL", icons: ["spicy"], nutrition: { kcal: 760, protein: 35, carbs: 68, fat: 40, allergens: ["Gluten", "Soya"] } },
@@ -161,7 +161,7 @@ const menuPages = {
     { name: "Japanese Cheesecake", price: "500 TL", nutrition: { kcal: 360, protein: 8, carbs: 34, fat: 22, allergens: ["Süt ve süt ürünleri", "Yumurta", "Gluten"] } }
   ],
 
-  // 11. SAYFA — SOĞUK & SICAK İÇECEKLER
+  // 11. SAYFA — SOĞUK İÇECEKLER
   page10b: [
     { type: "heading", title: "SOĞUK İÇECEKLER" },
     { name: "Küçük Su", price: "60 TL", nutrition: { kcal: 0, protein: 0, carbs: 0, fat: 0, allergens: ["Belirgin alerjen yok"] } },
@@ -171,13 +171,21 @@ const menuPages = {
     { name: "Uludağ Gazoz 330 ml", price: "120 TL", nutrition: { kcal: 140, protein: 0, carbs: 35, fat: 0, allergens: ["Belirgin alerjen yok"] } },
     { name: "Büyük Su", price: "100 TL", nutrition: { kcal: 0, protein: 0, carbs: 0, fat: 0, allergens: ["Belirgin alerjen yok"] } },
     { name: "San Pellegrino 250 ml", price: "160 TL", nutrition: { kcal: 0, protein: 0, carbs: 0, fat: 0, allergens: ["Belirgin alerjen yok"] } },
-    { name: "San Pellegrino 750 ml", price: "260 TL", nutrition: { kcal: 0, protein: 0, carbs: 0, fat: 0, allergens: ["Belirgin alerjen yok"] } },
+    { name: "San Pellegrino 750 ml", price: "260 TL", nutrition: { kcal: 0, protein: 0, carbs: 0, fat: 0, allergens: ["Belirgin alerjen yok"] } }
+  ],
 
+  // 12. SAYFA — SICAK İÇECEKLER & BİTKİ ÇAYLARI
+  page10c: [
     { type: "heading", title: "SICAK İÇECEKLER" },
     { name: "Türk Kahvesi", price: "160 TL", nutrition: { kcal: 7, protein: 0.3, carbs: 0.4, fat: 0.3, allergens: ["Belirgin alerjen yok"], note: "Şekersiz servis için yaklaşık değerdir." } },
-    { name: "Bitki Çayı", price: "180 TL", nutrition: { kcal: 2, protein: 0, carbs: 0.4, fat: 0, allergens: ["Belirgin alerjen yok"], note: "Şekersiz servis için yaklaşık değerdir." } },
     { name: "Filtre Kahve", price: "180 TL", nutrition: { kcal: 3, protein: 0.3, carbs: 0, fat: 0, allergens: ["Belirgin alerjen yok"], note: "Sade servis için yaklaşık değerdir." } },
-    { name: "Yeşil Çay", price: "160 TL", nutrition: { kcal: 2, protein: 0, carbs: 0.4, fat: 0, allergens: ["Belirgin alerjen yok"], note: "Şekersiz servis için yaklaşık değerdir." } }
+
+    { type: "heading", title: "BİTKİ ÇAYLARI" },
+    { name: "Bergamotlu Seylan Çayı", price: "180 TL", nutrition: { kcal: 2, protein: 0, carbs: 0.4, fat: 0, allergens: ["Belirgin alerjen yok"], note: "Şekersiz servis için yaklaşık değerdir." } },
+    { name: "Saf Yeşil Çay", price: "180 TL", nutrition: { kcal: 2, protein: 0, carbs: 0.4, fat: 0, allergens: ["Belirgin alerjen yok"], note: "Şekersiz servis için yaklaşık değerdir." } },
+    { name: "Yaseminli Yeşil Çay", price: "180 TL", nutrition: { kcal: 2, protein: 0, carbs: 0.4, fat: 0, allergens: ["Belirgin alerjen yok"], note: "Şekersiz servis için yaklaşık değerdir." } },
+    { name: "Kırmızı Meyveli Hibisküs Çayı", price: "180 TL", nutrition: { kcal: 2, protein: 0, carbs: 0.4, fat: 0, allergens: ["Belirgin alerjen yok"], note: "Şekersiz servis için yaklaşık değerdir." } },
+    { name: "Zencefilli Enerji Çayı", price: "180 TL", nutrition: { kcal: 2, protein: 0, carbs: 0.4, fat: 0, allergens: ["Belirgin alerjen yok"], note: "Şekersiz servis için yaklaşık değerdir." } }
   ]
 
 };

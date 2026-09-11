@@ -653,6 +653,26 @@ body{overflow-x:hidden}
    8. SAYFA — ANA YEMEKLER & IZGARALAR
    ========================================================== */
 .page8-approved-page{position:relative;container-type:inline-size}
+.page8-shao-name{
+  position:absolute;
+  z-index:55;
+  left:29.85%;
+  top:40.66%;
+  width:20.5%;
+  height:2.24%;
+  display:flex;
+  align-items:center;
+  justify-content:flex-start;
+  background:#00180d;
+  box-shadow:0 0 .45cqw .32cqw #00180d;
+  color:#BFC0BC;
+  font-family:"Times New Roman",Times,serif;
+  font-size:clamp(7.5px,2.55cqw,19.4px);
+  font-weight:400;
+  line-height:1;
+  white-space:nowrap;
+  pointer-events:none;
+}
 .page8-wagyu-price{
   position:absolute;
   z-index:55;
@@ -896,10 +916,16 @@ body{overflow-x:hidden}
   height:57.8%;
   grid-template-rows:1.45fr repeat(10,minmax(0,1fr));
 }
-.page10-drinks-menu{
+.page10-cold-menu,
+.page10-hot-menu{
   top:21.6%;
-  height:59.7%;
-  grid-template-rows:1.45fr repeat(8,minmax(0,1fr)) 1.70fr repeat(4,minmax(0,1fr));
+  height:56.5%;
+}
+.page10-cold-menu{
+  grid-template-rows:1.45fr repeat(8,minmax(0,1fr));
+}
+.page10-hot-menu{
+  grid-template-rows:1.45fr repeat(2,minmax(0,1fr)) 1.70fr repeat(5,minmax(0,1fr));
 }
 .page10-coded-menu .menu-heading{align-items:center}
 .page10-coded-menu .heading-flower{width:1.42em;height:1.42em}
@@ -1031,7 +1057,7 @@ body{overflow-x:hidden}
 
 
 /* ==========================================================
-   PİŞMİŞ ROLLER — 6 + 5 ÜRÜN OLARAK İKİ KODLANMIŞ SAYFA
+   PİŞMİŞ ROLLER — 6 + 6 ÜRÜN OLARAK İKİ KODLANMIŞ SAYFA
    Aynı onaylı çerçeve/dekor korunur; ürünler veri dosyasından çizilir.
    ========================================================== */
 .page6-coded-page{position:relative;container-type:inline-size}
@@ -1152,15 +1178,15 @@ body{overflow-x:hidden}
 .page6-coded-page .page7-coded-desc{justify-self:start}
 
 /* ==========================================================
-   ÇİĞ ROLLER — 5 + 5 ÜRÜN OLARAK İKİ KODLANMIŞ SAYFA
-   Koi dekoru korunur; iki sayfada aynı okunaklı satır ritmi kullanılır.
+   ÇİĞ ROLLER — 9 ÜRÜNLÜ TEK KODLANMIŞ SAYFA
+   Koi dekoru korunur; açıklamalar mobilde de okunaklı kalır.
    ========================================================== */
 .page7-coded-page .page7-coded-menu{
   top:30% !important;
   height:auto !important;
   display:flex !important;
   flex-direction:column;
-  gap:4cqw;
+  gap:3cqw;
 }
 .page7-coded-page .page7-coded-item{
   flex:0 0 auto;
@@ -1381,7 +1407,9 @@ body{overflow-x:hidden}
 
   /* Pişmiş ve çiğ roller */
   .page6-coded-menu{left:26% !important;right:13% !important;gap:1.7vw}
-  .page7-coded-page .page7-coded-menu{left:23%;right:12%;gap:3.3vw}
+  .page7-coded-page .page7-coded-menu{
+    left:22%;right:4%;top:29% !important;gap:.75vw;
+  }
 
   .page6-coded-page .page7-coded-item,
   .page7-coded-page .page7-coded-item{
@@ -1400,6 +1428,13 @@ body{overflow-x:hidden}
   .page7-coded-page .page7-coded-topline{
     display:flex;flex-wrap:wrap;row-gap:.1em;max-width:100%;
   }
+  .page7-coded-page .page7-coded-topline{flex-wrap:nowrap}
+  .page7-coded-page .page7-coded-item{row-gap:.08em}
+  .page7-coded-page .page7-coded-name,
+  .page7-coded-page .page7-coded-price{
+    font-size:8.2px;
+    font-size:clamp(8.2px,2.35vw,11.5px);
+  }
   .page6-coded-page .page7-coded-name,
   .page7-coded-page .page7-coded-name{white-space:normal}
   .page6-coded-page .page7-coded-desc,
@@ -1410,6 +1445,11 @@ body{overflow-x:hidden}
     line-height:1.18;
     white-space:normal;
     overflow-wrap:break-word;
+  }
+  .page7-coded-page .page7-coded-desc{
+    font-size:7.1px;
+    font-size:clamp(7.1px,1.92vw,9.4px);
+    line-height:1.12;
   }
 
   /* Kodlanmış tatlı ve içecek sayfaları */
@@ -1484,11 +1524,15 @@ body{overflow-x:hidden}
 }
 
 @media (max-width:350px){
+  .page6-coded-page,
+  .page7-coded-page{aspect-ratio:2 / 3}
+  .page6-coded-page .page-art,
+  .page7-coded-page .page-art{height:100%;object-fit:fill}
   .page3-start-menu,
   .page3-salad-soup-menu{left:33%;right:7%}
   .page4-menu-items{left:21.5%;right:14%}
   .page5-coded-menu{left:20%;right:11%;gap:1.1vw}
-  .page6-coded-menu{left:24% !important;right:10% !important;gap:1.35vw}
-  .page7-coded-page .page7-coded-menu{left:21%;right:10%;gap:2.8vw}
+  .page6-coded-menu{left:24% !important;right:10% !important;gap:.8vw}
+  .page7-coded-page .page7-coded-menu{left:20%;right:3%;gap:.55vw}
   .page10-coded-menu{left:20.5%;right:8%}
 }

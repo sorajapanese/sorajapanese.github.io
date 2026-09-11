@@ -677,12 +677,9 @@
 
   function renderPage7Coded(items) {
     if (!Array.isArray(items)) return;
-    const pages = document.querySelectorAll('.page7-coded-page');
-    if (pages.length < 2) return;
-    const first = items.slice(0, 5);
-    const second = items.slice(5);
-    renderRollCoded(pages[0], document.getElementById('page7-coded-menu-1'), first, 30.0, 53.5);
-    renderRollCoded(pages[1], document.getElementById('page7-coded-menu-2'), second, 30.0, 53.5);
+    const page = document.querySelector('.page7-coded-page');
+    const container = document.getElementById('page7-coded-menu');
+    renderRollCoded(page, container, items, 30.0, 53.5);
   }
 
   function syncPage7CaliforniaDescription() {
@@ -923,6 +920,7 @@
     initPage8Nutrition();
     initPage9Nutrition();
     renderMenu('page10-desserts-menu', menuPages.page10a);
-    renderMenu('page10-drinks-menu', menuPages.page10b);
+    renderMenu('page10-cold-menu', menuPages.page10b);
+    renderMenu('page10-hot-menu', menuPages.page10c);
   }
 })();
