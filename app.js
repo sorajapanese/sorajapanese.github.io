@@ -140,6 +140,7 @@
 
       const row = document.createElement('div');
       row.className = 'menu-item';
+      if (item.description) row.classList.add('has-description');
 
       const flower = document.createElement('img');
       flower.className = 'menu-flower';
@@ -154,6 +155,13 @@
       name.className = 'item-name';
       name.textContent = item.name;
       content.appendChild(name);
+
+      if (item.description) {
+        const description = document.createElement('span');
+        description.className = 'item-description';
+        description.textContent = item.description;
+        content.appendChild(description);
+      }
 
       if (Array.isArray(item.icons) && item.icons.length) {
         const icons = document.createElement('span');

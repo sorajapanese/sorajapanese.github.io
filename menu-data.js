@@ -150,14 +150,13 @@ const menuPages = {
   page10a: [
     { type: "heading", title: "TATLI" },
     { name: "Kızarmış Dondurma", price: "400 TL", nutrition: { kcal: 420, protein: 7, carbs: 52, fat: 20, allergens: ["Süt ve süt ürünleri", "Gluten", "Yumurta"], note: "Porsiyon ve kaplama reçetesine göre değişebilir." } },
-    { name: "Mochi Çilek", price: "350 TL", nutrition: { kcal: 220, protein: 3, carbs: 44, fat: 4, allergens: ["Süt ve süt ürünleri"], note: "Dolgu çeşidine göre değerler değişebilir." } },
-    { name: "Mochi Vanilya", price: "350 TL", nutrition: { kcal: 220, protein: 3, carbs: 44, fat: 4, allergens: ["Süt ve süt ürünleri"], note: "Dolgu çeşidine göre değerler değişebilir." } },
-    { name: "Mochi Vişne", price: "400 TL", nutrition: { kcal: 220, protein: 3, carbs: 44, fat: 4, allergens: ["Süt ve süt ürünleri"], note: "Dolgu çeşidine göre değerler değişebilir." } },
-    { name: "Mochi Yuzu", price: "400 TL", nutrition: { kcal: 220, protein: 3, carbs: 44, fat: 4, allergens: ["Süt ve süt ürünleri"], note: "Dolgu çeşidine göre değerler değişebilir." } },
+    { name: "Sweet Roll", price: "585 TL", description: "Corn flakes, muz, çilek, Nutella, soy wrap", nutrition: { kcal: null, protein: null, carbs: null, fat: null, allergens: ["Gluten", "Soya", "Süt ve süt ürünleri", "Fındık"], note: "Porsiyon gramajı netleşmediği için besin değeri hesaplanmamıştır." } },
     { name: "Mochi Baileys", price: "400 TL", nutrition: { kcal: 220, protein: 3, carbs: 44, fat: 4, allergens: ["Süt ve süt ürünleri"], note: "Dolgu çeşidine göre değerler değişebilir." } },
     { name: "Mochi Ferrero Çikolata", price: "400 TL", nutrition: { kcal: 220, protein: 3, carbs: 44, fat: 4, allergens: ["Süt ve süt ürünleri", "Fındık"], note: "Dolgu çeşidine göre değerler değişebilir." } },
     { name: "Mochi Frenk Üzümlü", price: "400 TL", nutrition: { kcal: 220, protein: 3, carbs: 44, fat: 4, allergens: ["Süt ve süt ürünleri"], note: "Dolgu çeşidine göre değerler değişebilir." } },
-    { name: "Mochi Piña Colada", price: "400 TL", nutrition: { kcal: 220, protein: 3, carbs: 44, fat: 4, allergens: ["Süt ve süt ürünleri"], note: "Dolgu çeşidine göre değerler değişebilir." } },
+    { name: "Mochi Pinacolada", price: "400 TL", nutrition: { kcal: 220, protein: 3, carbs: 44, fat: 4, allergens: ["Süt ve süt ürünleri"], note: "Dolgu çeşidine göre değerler değişebilir." } },
+    { name: "Mochi Vişne", price: "400 TL", nutrition: { kcal: 220, protein: 3, carbs: 44, fat: 4, allergens: ["Süt ve süt ürünleri"], note: "Dolgu çeşidine göre değerler değişebilir." } },
+    { name: "Mochi Yuzu", price: "400 TL", nutrition: { kcal: 220, protein: 3, carbs: 44, fat: 4, allergens: ["Süt ve süt ürünleri"], note: "Dolgu çeşidine göre değerler değişebilir." } },
     { name: "Japanese Cheesecake", price: "500 TL", nutrition: { kcal: 360, protein: 8, carbs: 34, fat: 22, allergens: ["Süt ve süt ürünleri", "Yumurta", "Gluten"] } }
   ],
 
