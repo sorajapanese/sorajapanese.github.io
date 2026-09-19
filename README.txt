@@ -20,3 +20,10 @@ Master icon set locked: spicy=page6 chili; vegetarian=existing leaf; raw=page4 f
 9. sayfa eklendi: TATLILAR / SOĞUK İÇECEKLER / SICAK İÇECEKLER.
 Onaylanan son tasarım görseli korunmuştur; ürünlerin yanındaki + alanları tıklanarak yaklaşık besin değerleri ve alerjen bilgileri açılır.
 İlk 8 sayfanın mevcut dosyaları ve çalışma biçimi korunmuştur.
+
+
+HOTPOT SAYFASI
+Ana Yemekler & Izgaralar sayfasından sonra, Noodle sayfasından önce yer alır.
+Tasarım; Ana Yemekler & Izgaralar sayfasının çerçeve, başlık, ejderha ve alev düzenini kullanır.
+Fiyat, et seçenekleri, sebzeler, notlar ve ekstra füme et bilgileri menu-data.js içindeki menuPages.hotpot alanından düzenlenir.
+Hotpot ve Ekstra Füme Et satırlarındaki + düğmeleri besin/alerjen bilgi kartını açar.

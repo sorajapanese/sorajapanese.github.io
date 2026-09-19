@@ -95,17 +95,26 @@
     const n = item.nutrition;
     panel.querySelector('.nutrition-name').textContent = item.name;
     panel.querySelector('.nutrition-kcal').textContent =
-      Number.isFinite(n.kcal) ? `≈ ${n.kcal} kcal` : 'Bilgi gerekli';
-    panel.querySelector('.nutrition-macros').innerHTML =
-      Number.isFinite(n.protein) && Number.isFinite(n.carbs) && Number.isFinite(n.fat)
+      n.kcalText || (Number.isFinite(n.kcal) ? `≈ ${n.kcal} kcal` : 'Bilgi gerekli');
+
+    const macros = panel.querySelector('.nutrition-macros');
+    const allergensPanel = panel.querySelector('.nutrition-allergens');
+    const note = panel.querySelector('.nutrition-note');
+    const caloriesOnly = n.caloriesOnly === true;
+
+    macros.hidden = caloriesOnly;
+    allergensPanel.hidden = caloriesOnly;
+    note.hidden = caloriesOnly;
+
+    macros.innerHTML =
+      !caloriesOnly && Number.isFinite(n.protein) && Number.isFinite(n.carbs) && Number.isFinite(n.fat)
         ? `<span>Protein <strong>${n.protein} g</strong></span>
            <span>Karbonhidrat <strong>${n.carbs} g</strong></span>
            <span>Yağ <strong>${n.fat} g</strong></span>`
         : '';
     const allergens = n.allergens && n.allergens.length ? n.allergens.join(', ') : 'Bilgi yok';
-    panel.querySelector('.nutrition-allergens').innerHTML =
-      `<strong>Alerjenler:</strong> ${allergens}`;
-    panel.querySelector('.nutrition-note').textContent = n.note || '';
+    allergensPanel.innerHTML = caloriesOnly ? '' : `<strong>Alerjenler:</strong> ${allergens}`;
+    note.textContent = caloriesOnly ? '' : (n.note || '');
 
     panel.classList.add('is-open');
 
@@ -690,6 +699,122 @@
     renderRollCoded(page, container, items, 30.0, 53.5);
   }
 
+
+  function renderHotpotPage(data) {
+    const container = document.getElementById('hotpot-menu');
+    if (!container || !data || typeof data !== 'object') return;
+
+    const fragment = document.createDocumentFragment();
+
+    const createFlower = (className) => {
+      const flower = document.createElement('img');
+      flower.className = className;
+      flower.src = 'assets/menu-flower-master.png';
+      flower.alt = '';
+      flower.setAttribute('aria-hidden', 'true');
+      return flower;
+    };
+
+    const addHeading = (title, extraClass = '') => {
+      const heading = document.createElement('div');
+      heading.className = `hotpot-heading${extraClass ? ' ' + extraClass : ''}`;
+      const label = document.createElement('h2');
+      label.textContent = title;
+      heading.append(createFlower('hotpot-heading-flower'), label);
+      fragment.appendChild(heading);
+    };
+
+    const addDescription = (amount, options, extraClass = '') => {
+      const description = document.createElement('p');
+      description.className = `hotpot-description${extraClass ? ' ' + extraClass : ''}`;
+      const amountNode = document.createElement('strong');
+      amountNode.textContent = amount;
+      description.append(amountNode, document.createTextNode(` ${options.join(' veya ')}`));
+      fragment.appendChild(description);
+      return description;
+    };
+
+    const addProductLine = (displayName, priceText, item, extraClass = '') => {
+      const row = document.createElement('div');
+      row.className = `hotpot-product-line${extraClass ? ' ' + extraClass : ''}`;
+
+      const name = document.createElement('span');
+      name.className = 'hotpot-product-name';
+      name.textContent = displayName;
+
+      const leader = document.createElement('span');
+      leader.className = 'hotpot-leader';
+      leader.setAttribute('aria-hidden', 'true');
+
+      const price = document.createElement('span');
+      price.className = 'hotpot-price';
+      price.textContent = priceText;
+
+      row.append(createFlower('hotpot-item-flower'), name, leader, price);
+
+      if (item && item.nutrition) {
+        const toggle = document.createElement('button');
+        toggle.className = 'nutrition-toggle hotpot-plus';
+        toggle.type = 'button';
+        toggle.textContent = '+';
+        toggle.setAttribute('aria-label', `${item.name} besin ve alerjen bilgilerini aç`);
+        toggle.setAttribute('aria-expanded', 'false');
+        toggle.addEventListener('click', (event) => {
+          event.stopPropagation();
+          openNutritionPanel(container, row, item, toggle);
+        });
+        row.appendChild(toggle);
+      }
+
+      fragment.appendChild(row);
+      return row;
+    };
+
+    addHeading(data.title || 'HOTPOT');
+
+    const mainItem = {
+      name: data.nutritionLabel || data.productName || 'Hotpot',
+      nutrition: data.nutrition
+    };
+    addProductLine(data.productName || 'Hotpot', data.price || '', mainItem);
+    const mainDescription = addDescription(data.meatAmount || '', data.meatOptions || []);
+    mainDescription.appendChild(document.createTextNode(' seçimi'));
+
+    addHeading('SEBZELER', 'hotpot-vegetable-heading');
+    const vegetables = Array.isArray(data.vegetables) ? data.vegetables : [];
+    const splitIndex = Math.ceil(vegetables.length / 2);
+    const vegetableGrid = document.createElement('div');
+    vegetableGrid.className = 'hotpot-vegetable-grid';
+
+    [vegetables.slice(0, splitIndex), vegetables.slice(splitIndex)].forEach((columnItems) => {
+      const column = document.createElement('div');
+      column.className = 'hotpot-vegetable-column';
+      columnItems.forEach((vegetable) => {
+        const row = document.createElement('div');
+        row.className = 'hotpot-vegetable';
+        const label = document.createElement('span');
+        label.textContent = vegetable;
+        row.append(createFlower('hotpot-vegetable-flower'), label);
+        column.appendChild(row);
+      });
+      vegetableGrid.appendChild(column);
+    });
+    fragment.appendChild(vegetableGrid);
+
+    const vegetableNote = document.createElement('p');
+    vegetableNote.className = 'hotpot-note';
+    vegetableNote.textContent = data.vegetableNote || '';
+    fragment.appendChild(vegetableNote);
+
+    const extra = data.extra || {};
+    addHeading(extra.name || 'EKSTRA FÜME ET', 'hotpot-extra-heading');
+    const extraItem = { name: extra.nutritionLabel || extra.name || 'Ekstra Füme Et', nutrition: extra.nutrition };
+    addProductLine(extra.amount || '', extra.price || '', extraItem, 'hotpot-extra-line');
+    addDescription('', extra.options || [], 'hotpot-extra-description');
+
+    container.replaceChildren(fragment);
+  }
+
   function syncPage7CaliforniaDescription() {
     const target = document.getElementById('page7-california-description');
     if (!target || typeof menuPages === 'undefined' || !Array.isArray(menuPages.page7)) return;
@@ -926,6 +1051,7 @@
     renderPage6Coded(menuPages.page6);
     renderPage7Coded(menuPages.page7);
     initPage8Nutrition();
+    renderHotpotPage(menuPages.hotpot);
     initPage9Nutrition();
     renderMenu('page10-desserts-menu', menuPages.page10a);
     renderMenu('page10-cold-menu', menuPages.page10b);

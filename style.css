@@ -743,6 +743,167 @@ body{overflow-x:hidden}
 
 
 /* ==========================================================
+   HOTPOT — ANA YEMEKLER & IZGARALAR TASARIM AİLESİ
+   İçerik menu-data.js içindeki menuPages.hotpot alanından gelir.
+   ========================================================== */
+.hotpot-page{position:relative;container-type:inline-size}
+
+.hotpot-menu{
+  position:absolute;
+  z-index:5;
+  left:24.68%;
+  right:19.34%;
+  top:25.35%;
+  color:var(--sora-white);
+  font-family:"Iowan Old Style","Palatino Linotype","Book Antiqua",Palatino,Georgia,serif;
+}
+
+.hotpot-heading{
+  display:flex;
+  align-items:center;
+  gap:1.57cqw;
+  color:var(--sora-gold-light);
+  text-transform:uppercase;
+}
+.hotpot-heading-flower{
+  display:block;
+  width:4.24cqw;
+  height:4.24cqw;
+  object-fit:contain;
+  flex:0 0 auto;
+}
+.hotpot-heading h2{
+  margin:0;
+  color:var(--sora-gold-light);
+  font-size:clamp(13px,4.24cqw,32.2px);
+  font-weight:600;
+  letter-spacing:.065em;
+  line-height:1;
+  text-shadow:0 1px 1px rgba(0,0,0,.4);
+}
+
+.hotpot-product-line{
+  display:grid;
+  grid-template-columns:2.67cqw max-content minmax(2.58cqw,1fr) max-content 3.22cqw;
+  align-items:center;
+  column-gap:.92cqw;
+  margin-top:2.39cqw;
+  white-space:nowrap;
+  line-height:1;
+}
+.hotpot-item-flower{
+  display:block;
+  width:2.67cqw;
+  height:2.67cqw;
+  object-fit:contain;
+}
+.hotpot-product-name,
+.hotpot-price{
+  font-size:clamp(8.5px,2.76cqw,21px);
+  font-weight:500;
+  text-shadow:0 1px 1px rgba(0,0,0,.45);
+}
+.hotpot-product-name{color:var(--sora-white)}
+.hotpot-price{color:var(--sora-gold-light)}
+.hotpot-leader{
+  min-width:2.2cqw;
+  border-bottom:.28cqw dotted rgba(169,131,63,.92);
+  transform:translateY(.37cqw);
+}
+.hotpot-plus{
+  width:clamp(20px,3.22cqw,24.5px);
+  height:clamp(20px,3.22cqw,24.5px);
+  min-width:0;
+  min-height:0;
+  padding:0;
+  border:.18cqw solid var(--sora-gold);
+  border-radius:50%;
+  display:grid;
+  place-items:center;
+  background:transparent;
+  color:var(--sora-gold-light);
+  font:400 clamp(14px,2.67cqw,20.3px)/1 Arial,sans-serif;
+  cursor:pointer;
+  outline:none;
+  touch-action:manipulation;
+  -webkit-tap-highlight-color:transparent;
+}
+.hotpot-plus.is-active{background:rgba(11,44,32,.98)}
+.hotpot-plus:focus-visible{outline:2px solid rgba(223,191,114,.9);outline-offset:2px}
+
+.hotpot-description{
+  margin:.83cqw 4.42cqw 0;
+  color:rgba(239,229,207,.84);
+  font-size:clamp(7px,1.84cqw,14px);
+  font-style:italic;
+  line-height:1.2;
+}
+.hotpot-description strong{
+  color:var(--sora-gold-light);
+  font-style:normal;
+  font-weight:500;
+}
+
+.hotpot-vegetable-heading{margin-top:3.41cqw}
+.hotpot-vegetable-heading .hotpot-heading-flower{width:3.78cqw;height:3.78cqw}
+.hotpot-vegetable-heading h2{font-size:clamp(12px,3.41cqw,25.9px);letter-spacing:.045em}
+.hotpot-vegetable-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  column-gap:4.60cqw;
+  margin:2.03cqw .18cqw 0 1.10cqw;
+}
+.hotpot-vegetable-column{display:grid;gap:1.29cqw}
+.hotpot-vegetable{
+  display:flex;
+  align-items:center;
+  gap:1.01cqw;
+  color:var(--sora-white);
+  font-size:clamp(8.2px,2.30cqw,17.5px);
+  line-height:1.05;
+  white-space:nowrap;
+}
+.hotpot-vegetable-flower{
+  display:block;
+  width:1.84cqw;
+  height:1.84cqw;
+  object-fit:contain;
+  opacity:.95;
+  flex:0 0 auto;
+}
+.hotpot-note{
+  margin:2.30cqw 0 0 .83cqw;
+  padding-top:1.38cqw;
+  border-top:1px solid rgba(169,131,63,.62);
+  color:rgba(239,229,207,.82);
+  font-size:clamp(7px,1.66cqw,12.6px);
+  line-height:1.4;
+  font-style:italic;
+}
+
+.hotpot-extra-heading{margin-top:2.85cqw}
+.hotpot-extra-heading .hotpot-heading-flower{width:3.59cqw;height:3.59cqw}
+.hotpot-extra-heading h2{font-size:clamp(12px,3.22cqw,24.5px)}
+.hotpot-extra-line{margin-top:1.75cqw}
+.hotpot-extra-line .hotpot-product-name,
+.hotpot-extra-line .hotpot-price{font-size:clamp(8.5px,2.39cqw,18.2px)}
+.hotpot-extra-description{margin-top:.64cqw}
+.hotpot-extra-description strong:empty{display:none}
+.hotpot-art{
+  position:absolute;
+  z-index:4;
+  left:36.83%;
+  width:39.13%;
+  bottom:2.76%;
+  opacity:.55;
+  filter:sepia(.1) saturate(.8) brightness(.92);
+  pointer-events:none;
+  user-select:none;
+}
+.hotpot-page .nutrition-panel{left:24.5%;right:18.5%;z-index:100}
+
+
+/* ==========================================================
    9. SAYFA — TATLILAR & İÇECEKLER
    Onaylı görsel kilitlidir; yalnızca + düğmeleri ve açılır bilgi kartı üst katmandadır.
    Bu görsel 2:3 oranındadır; tasarımın kırpılmaması için sayfa oranı korunur.
@@ -1496,6 +1657,7 @@ body{overflow-x:hidden}
     line-height:1.16;
   }
   .page10-coded-page .nutrition-panel{left:15%;right:7%}
+  .hotpot-page .nutrition-panel{left:18%;right:9%}
 
   /* Açılır besin ve alerjen kartları */
   .nutrition-panel,

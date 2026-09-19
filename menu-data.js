@@ -126,6 +126,48 @@ const menuPages = {
     { name: "Wagyu", price: "12.000 TL", icons: [], nutrition: { kcal: null, protein: null, carbs: null, fat: null, allergens: ["Belirgin alerjen yok"], note: "Gramaj belirtilmediği için besin değeri hesaplanmamıştır." } }
   ],
 
+  // HOTPOT SAYFASI
+  // Fiyat, et seçenekleri, sebzeler ve ekstra füme et bilgileri bu alandan düzenlenir.
+  hotpot: {
+    title: "HOTPOT",
+    productName: "Hotpot",
+    price: "2.000 TL",
+    meatAmount: "100 g",
+    nutritionLabel: "100 g Füme Et",
+    meatOptions: ["Füme Biftek", "Füme Antrikot"],
+    vegetables: [
+      "Japon Turbu",
+      "Yeşil Soğan",
+      "Lahana",
+      "Havuç",
+      "Kabak",
+      "Patlıcan",
+      "Brokoli",
+      "Ispanak",
+      "Mantar",
+      "Baby Mısır",
+      "Karnabahar",
+      "Tere",
+      "Tatlı Patates"
+    ],
+    vegetableNote: "Sebzeler sınırsızdır. Çeşitler günlük olarak değişiklik gösterebilir.",
+    nutrition: {
+      kcalText: "≈ 250–290 kcal",
+      caloriesOnly: true
+    },
+    extra: {
+      name: "Ekstra Füme Et",
+      amount: "100 g",
+      price: "750 TL",
+      nutritionLabel: "Ekstra Füme Et (100 g)",
+      options: ["Füme Biftek", "Füme Antrikot"],
+      nutrition: {
+        kcalText: "≈ 250–290 kcal",
+        caloriesOnly: true
+      }
+    }
+  },
+
   // 9. SAYFA — NOODLE & RICE / UDON / RAMEN
   // Besin değerleri porsiyon bazında yaklaşık değerlerdir.
   page9: [
